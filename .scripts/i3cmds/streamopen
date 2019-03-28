@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Script to open programs for our entertainment
+
+# Opening OBS
+i3-msg "workspace Stream Config"
+obs &>/dev/null &
+# sleep to wait the window to show (maybe use xdotool to be faster?)
+sleep 2
+
+# Opening twitch chat, vim and taskwarrior
+i3-msg "workspace Stream 1"
+i3-msg exec $TERMINAL
+sleep 1
+chatty &>/dev/null &
+sleep 3
+
+# Manually resize to the amount i want
+i3-msg focus left
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3resize right
+i3-msg focus right
+
+# Oppening firefox on twith.tv/thomaznex/dashboard
+i3-msg "workspace Stream 2"
+firefox --private-window https://twitch.tv/thomaznex/dashboard
+sleep 2
+
+# returning to workspace stream config
+i3-msg "workspace Stream Config"

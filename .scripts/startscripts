@@ -1,0 +1,7 @@
+# List of scripts running at i3 startup
+
+note "Running startscripts"
+for filename in ~/.scripts/start/*; do
+	chmod +x $filename
+	$filename
+done

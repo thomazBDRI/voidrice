@@ -3,8 +3,13 @@ h	~/
 d	~/Documents
 D	~/Downloads
 m	~/Music
-pp	~/Pictures
 vv	~/Videos
 cf	~/.config
 sc	~/.scripts
 mn	/mnt
+bl	~/blog
+bc	~/blog/content/blog
+im	~/images
+re	~/repos
+sct	~/.scripts/start
+

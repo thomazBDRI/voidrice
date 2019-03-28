@@ -75,6 +75,8 @@ bindsym $mod+grave		exec --no-startup-id dmenuunicode
 
 #STOP/HIDE EVERYTHING:
 bindsym $mod+Shift+Delete	exec --no-startup-id lmc truemute ; exec --no-startup-id lmc pause ; exec --no-startup-id pauseallmpv; workspace 0; exec $term -e htop ; exec $term -e $FILE
+bindsym $mod+ccedilla		workspace 0; exec --no-startup-id lmc truemute; exec --no-startup-id firefox -private-window
+bindsym $mod+Shift+ccedilla	workspace 0; focus parent, focus parent, kill; workspace 1; exec --no-startup-id lmc trueunmute
 
 # Show selection:
 bindsym $mod+Insert		exec --no-startup-id showclip
@@ -96,7 +98,7 @@ bindsym $mod+Shift+r		exec --no-startup-id winresize
 bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
 
-bindsym $mod+y			exec $term -e calcurse -D ~/.config/calcurse
+bindsym $mod+y			exec $term -e tasksh -r
 bindsym $mod+Shift+y		exec --no-startup-id i3resize left
 
 bindsym $mod+u			exec --no-startup-id ddspawn tmuxdd
@@ -120,12 +122,8 @@ bindsym $mod+Shift+s		gaps inner current minus 5
 bindsym $mod+d			exec --no-startup-id dmenu_run
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
-set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
-mode "$freeze" { bindsym $mod+Shift+f mode "default"
-}
-
 bindsym $mod+f			fullscreen toggle
-bindsym $mod+Shift+f		mode "$freeze" ;; exec --no-startup-id notify-send "<b>Distraction-free mode activated.</b> Press Super+Shift+f to return."
+#bindsym $mod+Shift+f
 
 bindsym $mod+g			workspace prev
 bindsym $mod+Shift+g		exec --no-startup-id gimp; workspace $ws5
@@ -145,14 +143,15 @@ bindsym $mod+Shift+l		move right 30
 bindsym $mod+z			gaps outer current plus 5
 bindsym $mod+Shift+z		gaps outer current minus 5
 
-bindsym $mod+x			exec --no-startup-id mpc pause; exec --no-startup-id pauseallmpv ; exec --no-startup-id i3lock -e -f -c 1d2021
+bindsym $mod+x			exec $term -e tasksh -e next
 bindsym $mod+Shift+x		exec --no-startup-id prompt "Shutdown computer?" "$shutdown"
 
 bindsym $mod+c			exec --no-startup-id cabl
+#bindsym $mod+c			exec --no-startup-id bm r
 bindsym $mod+Shift+c		exec --no-startup-id camtoggle
 
-bindsym $mod+v			exec --no-startup-id $term -e $EDITOR -c "VimwikiIndex"
-#bindsym $mod+Shift+v
+bindsym $mod+v			exec --no-startup-id ytmusicsearch
+bindsym $mod+Shift+v		exec --no-startup-id dmenumpv
 
 bindsym $mod+b			bar mode toggle
 bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id bottomleft
@@ -244,7 +243,8 @@ bindsym $mod+F8		exec --no-startup-id ~/.config/mutt/etc/mailsync.sh
 bindsym $mod+F9		exec --no-startup-id dmenumount
 bindsym $mod+F10	exec --no-startup-id dmenuumount
 bindsym $mod+F11	exec --no-startup-id ducksearch
-bindsym $mod+F12	exec $term -e nmtui
+#bindsym $mod+F12	exec $term -e nmtui
+bindsym $mod+F12	exec --no-startup-id dmenuunicode
 
 # #---Arrow Keys---# #
 bindsym $mod+Left		focus left
@@ -274,7 +274,7 @@ bindsym $mod+bracketright 	exec --no-startup-id lmc forward 10
 bindsym $mod+Shift+bracketright exec --no-startup-id lmc forward 120
 
 # For screenshots and recording
-bindsym Print 			exec --no-startup-id maim pic-full-"$(date '+%y%m%d-%H%M-%S').png"
+bindsym Print 			exec --no-startup-id maim ~/images/screenshots/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym Shift+Print 		exec --no-startup-id maimpick
 bindsym $mod+Print		exec --no-startup-id dmenurecord
 bindsym $mod+Scroll_Lock	exec --no-startup-id "killall screenkey || screenkey"
@@ -320,7 +320,7 @@ bindsym XF86AudioRewind		exec --no-startup-id lmc back 10
 bindsym XF86AudioForward	exec --no-startup-id lmc forward 10
 ##bindsym XF86Phone		exec
 ##bindsym XF86Tools		exec
-bindsym XF86HomePage		exec $BROWSER https://lukesmith.xyz
+#bindsym XF86HomePage		exec $BROWSER https://lukesmith.xyz
 bindsym XF86Reload		restart
 ##bindsym XF86ScrollUp		exec
 ##bindsym XF86ScrollDown		exec
@@ -363,3 +363,6 @@ bindsym XF86Documents		exec $term -e $FILE ~/Documents
 ##bindsym XF86Battery		exec
 ##bindsym XF86Bluetooth		exec
 bindsym XF86WLAN		exec $netrefresh
+
+# Exec startup scripts
+exec --no-startup-id startscripts

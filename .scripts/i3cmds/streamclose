@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Script to close all stream # workspaces and its windows
+# Declaring all stream workspaces
+declare -a workspaces=("Stream 1" "Stream 2" "Stream 3" "Stream Config")
+
+## now loop through the above array
+for i in "${workspaces[@]}"
+do
+   i3-msg workspace $i
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg focus parent
+   i3-msg kill
+done
+
+i3-msg workspace 1

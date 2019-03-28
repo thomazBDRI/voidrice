@@ -1,0 +1,7 @@
+#!/bin/sh
+# Restart gatsby everytime the config is changed
+
+pkill "entr -p rungatsby"
+cd ~/blog
+echo "gatsby-config.js" | entr -p rungatsby &
+echo "package.json" | entr -p rungatsby &

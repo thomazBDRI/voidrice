@@ -1,0 +1,11 @@
+#!/bin/sh
+
+taskid=$(task active_bar 2>&1 | sed -n 4p | awk '{print $1}')
+
+case $BLOCK_BUTTON in
+    1) task $taskid done 2>&1 >/dev/null && notify-send "[taskactive] Marked task $taskid as completed" ;;
+    3) pgrep -x dunst >/dev/null && notify-send "<b>✅ Active Task Module:</b>
+- Left click to mark as done.";;
+esac
+
+[[ ! -z "$taskid" ]] && echo "✅ $(task active_bar 2>&1 | sed -n 4p)" || echo ""

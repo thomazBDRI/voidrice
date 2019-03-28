@@ -44,6 +44,7 @@ Scripts intended to be run either manually by the user or linked to a shortcut
 in vim or another program.
 
 - `compiler` -- Compiles a markdown, R markdown or LaTeX document with the approriate command.  Will also run `make && sudo make install` if in a `config.h` file.  Otherwise it will create a sent presentation.  This can be thought of a general output handler.  I have it bound to `<leader>c` in vim.
+- `autocompiler` -- Auto compiler with entr. Runs compiler at every save on
 - `dmenuhandler` -- Give this script a url and it will offer dmenu options for opening it. Used by `newsboat` and some other programs as a link handler.
 - `extract` -- Will detect file type of archive and run appropriate extraction command.
 - `getbib` -- Use crossref.org to automatically detect bibtex entry of a .pdf. Attempts to search for the .pdf's DOI. Returns nothing if none detected.
@@ -59,6 +60,7 @@ in vim or another program.
 - `tpb` -- Search Pirate Bay for the certain search terms given as arguments.
 - `texclear` -- Remove all `.tex` related build files. This is run by my vim when I stop editing any `.tex` file.
 - `transadd` -- The mimeapp default script for handling torrent magnet links. Starts `transmission-daemon` if not running and adds the link.
+- `rungatsby` -- Restart gatsby developer server and open `$BROWSER` tab at
 
 ## `i3cmds`
 
@@ -85,3 +87,8 @@ user-interface actions or involve dmenu.
 - `tmuxdd` -- The startup script for the dropdown terminal (toggleable with `mod+u`). Either attaches to an existing tmux session or begins a new one.
 - `toggletouchpad` -- As the name suggests, turns off TouchPad if on, and turns it on if off. Requires `xf86-input-synaptics`. If your laptop has a special button for this, it will be mapped by default.
 - `tutorialvids` -- A dmenu prompt that gives some options of tutorial videos to watch. Bound to `mod+shift+e`.
+- `ytmusicsearch` -- Search and download the first result from youtube as mp3
+  to `~/music`, if a URL is passed assume it is a web spotify playlist url and
+  download all musics.
+- `rofiducksearch` -- Same as `ducksearch` but with rofi
+- `rofiunicode` -- Same as `dmenuunicode` but with rofi

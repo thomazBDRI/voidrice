@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Gives a dmenu prompt to search and download music from Youtube.
+
+browser=${BROWSER:-firefox}
+
+pgrep -x dmenu && exit
+
+choice=$(echo "" | dmenu -i -p "Search Youtube 🎵:") || exit 1
+
+if [ "$choice" = ""  ]; then
+    exit 1
+else
+    # Detect if spotify url
+    if [[ "$choice" =~ ^https:\/\/.*$ ]]; then
+	cd ~/music
+	playlist=$(spotdl --playlist $choice 2>&1 >/dev/null | awk '{print $6}')
+	folder=$(echo $playlist | sed 's/\.txt//g')
+	mkdir "$folder"
+	notify-send "[ytsearch] Downloading playlist: $playlist"
+	cd "$folder"
+	spotdl -f $(pwd) --list "../$playlist"
+	rm -f "../$playlist"
+	notify-send "[ytsearch] Download finished: $playlist"
+    else
+        youtube-dl --extract-audio --audio-format mp3 --add-metadata -o '~/music/%(title)s.%(ext)s' "ytsearch:$choice"
+	mpc up
+	notify-send "[ytsearch] Download finished: $choice"
+    fi
+    mpc up
+fi

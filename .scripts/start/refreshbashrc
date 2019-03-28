@@ -1,0 +1,6 @@
+#!/bin/sh
+# Reload bashrc everytime it is changed
+
+pkill "entr -p bashrc"
+echo "~/.bashrc" | entr -ps '. ~/.bashrc' &
+echo "~/.bash_profile" | entr -ps '. ~/.bash_profile' &

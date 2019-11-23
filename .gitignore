@@ -1,0 +1,4 @@
+.config/nvim/autoload
+.config/nvim/plugged
+.local/share/man
+.local/share/recently-used.xbel

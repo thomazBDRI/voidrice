@@ -1,6 +1,0 @@
-#!/bin/sh
-# Reload shortcuts everytime it is changed
-
-pkill "entr -p shortcuts"
-cd ~/
-echo ".shortcuts" | entr -ps 'shortcuts > /dev/null; source ~/.bashrc' &

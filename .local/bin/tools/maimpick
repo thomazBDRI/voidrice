@@ -1,0 +1,13 @@
+#!/bin/sh
+
+name="$(date '+%y%m%d-%H%M').png"
+file="/home/$USER/images/screenshots/$name"
+
+case "$(printf "a selected area\\ncurrent window\\nfull screen" | dmenu -l 3 -i -p "Screenshot which area?")" in
+	"a selected area") maim -s $file ;;
+	"current window") maim -i "$(xdotool getactivewindow)" $file ;;
+	"full screen") maim $file ;;
+esac
+
+cat "$file" | xclip -selection primary -t image/png
+notify-send "Screenshot salva" "Screenshot $file salva no clipboard"

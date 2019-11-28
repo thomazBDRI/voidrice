@@ -13,7 +13,6 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
 Plug 'pangloss/vim-javascript'
@@ -113,12 +112,14 @@ set viminfo+=n~/.config/nvim/viminfo
 
 	nmap <leader>j :call GotoJump()<CR>
 
-
 " Automatically deletes all trailing whitespace on save.
 	autocmd BufWritePre * %s/\s\+$//e
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost *bmdirs,*bmfiles !shortcuts
+
+" When suckless files are update, install then
+  autocmd BufWritePost *dwm*,*dmenu*,*st*,*dwmstatus* !make install clean
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %

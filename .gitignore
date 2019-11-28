@@ -2,3 +2,6 @@
 .config/nvim/plugged
 .local/share/man
 .local/share/recently-used.xbel
+flatpak/
+.local/share/lf/
+.local/share/newsboat/cache.db

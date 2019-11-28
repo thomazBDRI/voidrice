@@ -1,0 +1,8 @@
+
+# Run every script at ~/.local/bin/start
+
+note "Running startscripts"
+for filename in ~/.local/bin/start/*; do
+	chmod +x $filename
+	$filename
+done

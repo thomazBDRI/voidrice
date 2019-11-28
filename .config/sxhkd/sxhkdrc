@@ -6,69 +6,67 @@
 # Basic binds
 super + Return
 	$TERMINAL
-super + shift + q
+
+super + q
 	kill -9 `xdotool getwindowfocus getwindowpid`
+
 super + d
 	dmenu_run
+
 super + r
 	$TERMINAL -e $FILE
-super + e
-	$TERMINAL -e neomutt; pkill -RTMIN+13 dwmblocks
+
 super + m
 	$TERMINAL -e ncmpcpp
+
 super + n
 	$TERMINAL -e newsboat
+
 super + a
- 	$TERMINAL -e htop
-super + c
-	$TERMINAL -e calcurse -D ~/.config/calcurse
+ 	$TERMINAL -e htop -t -u $USER
+
 super + v
 	$TERMINAL -e nvim -c VimwikiIndex
+
 super + shift + a
 	$TERMINAL -e alsamixer; pkill -RTMIN+10 dwmblocks
-super + shift + c
-	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
-super + shift + e
-	tutorialvids
-super + w
-	$TERMINAL -e sudo nmtui
+
 super + shift + w
 	$BROWSER
-super + shift + g
-	gimp
 
 # Et cetera...
-super + grave
-	dmenuunicode
-super + Scroll_Lock
-	killall screenkey || screenkey
+
 super + Insert
 	showclip
-super + shift + x
-	prompt "Shutdown computer?" "sudo -A shutdown -h now"
-super + shift + BackSpace
-	prompt "Reboot computer?" "sudo -A reboot"
+
 super + shift + Escape
 	prompt 'Leave Xorg?' 'killall Xorg'
+
 super + x
 	ifinstalled slock && ( slock & xset dpms force off ; mpc pause ; pauseallmpv )
+
 XF86Launch1
 	xset dpms force off
+
 XF86TouchpadToggle
 	(synclient | grep "TouchpadOff.*1" && synclient TouchpadOff=0) || synclient TouchpadOff=1
+
 XF86Touchpad{Off,On}
 	synclient TouchpadOff={1,0}
 
 # Recording
 # Take screenshot
 Print
-	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+	maim "/home/$USER/images/screenshots/$(date '+%y%m%d-%H%M').png"
+
 # Pick screenshot type
 shift + Print
 	maimpick
+
 # Print: Record audio or video; Del: kill recording
 super + Print
 	dmenurecord
+
 super + Delete
 	dmenurecord kill
 
@@ -134,31 +132,32 @@ XF86MyComputer
 	$TERMINAL -e $FILE /
 
 # Function keys
-super + shift + F1
-	grep LARBSWELCOME ~/.xprofile && ( sed -i "/LARBSWELCOME/d" ~/.xprofile && notify-send "LARBS welcome message" "Welcome message disabled. Press Super+Shift+F1 again to reverse." ) || ( echo "notify-send \"Welcome to LARBS on Void with dwm\" \"Press super+F1 for the help menu.\" # LARBSWELCOME" >> ~/.xprofile && notify-send "LARBS welcome message" "Welcome message re-enabled." )
+
+# TODO: Update it to my help (maybe vimwiki here?)
 # Show readme
-super + F1
-	groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
+# super + F1
+#   groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
+
 # super + F2 is mapped to restart dwm.
+
 # Change display
 super + F3
 	displayselect
-# Hibernate
+
 super + F4
-	prompt 'Hibernate computer?' 'sudo -A zzz -Z'
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+
+# Hibernate
 super + F5
-	sudo sv restart NetworkManager
-# Start torrent daemon/open interface
+	prompt 'Hibernate computer?' 'sudo -A ZZZ'
+
 super + F6
-	torwrap
-# toggle torrent daemon
-super + F7
-	td-toggle
-# sync email
-super + F8
-	mailsync
+	dmenuunicode
+
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenumount,dmenuumount}
+
 super + F12
 	$TERMINAL -e wpa_cli
+

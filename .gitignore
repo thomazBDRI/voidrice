@@ -5,3 +5,4 @@
 flatpak/
 .local/share/lf/
 .local/share/newsboat/cache.db
+viminfo

@@ -116,10 +116,13 @@ set viminfo+=n~/.config/nvim/viminfo
 	autocmd BufWritePre * %s/\s\+$//e
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
-	autocmd BufWritePost *bmdirs,*bmfiles !shortcuts
+	autocmd BufWritePost *.config/directories,*.config/files !shortcuts
 
 " When suckless files are update, install then
-  autocmd BufWritePost *dwm*,*dmenu*,*st*,*dwmstatus* !make install clean
+  autocmd BufWritePost *dwm.*,*dmenu.*,*st.* !make install clean
+
+" Restart dwmstatus when updated
+  autocmd BufWritePost *dwmstatus.* !make install clean; pkill dwmstatus; dwmstatus &> /dev/null &
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %

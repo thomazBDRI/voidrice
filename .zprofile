@@ -1,7 +1,7 @@
 # Profile file. Runs on login. Environmental variables are set here.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+export PATH="$PATH:$HOME/go/bin:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
 # Custom programs paths
 export USERBIN='~/.local/bin/programs'
@@ -10,7 +10,7 @@ export USERMAN='~/.local'
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="firefox"
 export READER="zathura"
 export FILE="lf"
 

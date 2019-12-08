@@ -1,0 +1,23 @@
+# You can add comments to these files with #
+
+# Normal stuff
+h	~/
+D	~/downloads
+m	~/music
+p ~/programs
+vv	~/videos
+cf	~/.config
+mn	/mnt
+im	~/images
+
+
+# Enviroments and repos
+jus	~/work
+zoni ~/freelance/zoni
+zap ~/freelance/zoni/api
+zaa ~/freelance/zoni/admin
+zad ~/freelance/zoni/database
+
+
+# Programs and Repos
+dwm ~/programs/dwm

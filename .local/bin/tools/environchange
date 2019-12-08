@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+file="$HOME/.config/environsrc"
+declare -A environs
+
+while IFS= read -r line
+do
+  environs["$(echo $line | awk '{print $1}')"]="$(echo $line | awk '{print $2}')"
+done < "$file"
+
+choice=$(awk '{ print $1 }' $file | dmenu)
+
+echo "Sourcing... $environs["$choice"]"
+
+source $environs["$choice"]

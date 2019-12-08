@@ -15,5 +15,5 @@
 # The loop is just to enable dwm's "restart" feature (mod+F2).
 
 while :; do
-  dwm 2> ~/.dwmlogs  || break
+  dwm || break
 done

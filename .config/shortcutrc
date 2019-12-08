@@ -1,2 +1,26 @@
 # vim: filetype=sh
-alias 
+alias h="cd ~/ && ls -a" \
+D="cd ~/downloads && ls -a" \
+m="cd ~/music && ls -a" \
+p="cd ~/programs && ls -a" \
+vv="cd ~/videos && ls -a" \
+cf="cd ~/.config && ls -a" \
+mn="cd /mnt && ls -a" \
+im="cd ~/images && ls -a" \
+jus="cd ~/work && ls -a" \
+zoni="cd ~/freelance/zoni && ls -a" \
+zap="cd ~/freelance/zoni/api && ls -a" \
+zaa="cd ~/freelance/zoni/admin && ls -a" \
+zad="cd ~/freelance/zoni/database && ls -a" \
+dwm="cd ~/programs/dwm && ls -a" \
+bf="$EDITOR ~/.config/files" \
+bd="$EDITOR ~/.config/directories" \
+cfa="$EDITOR ~/.config/aliasrc" \
+cfz="$EDITOR ~/.config/zsh/.zshrc" \
+cfv="$EDITOR ~/.config/nvim/init.vim" \
+cfu="$EDITOR ~/.config/newsboat/urls" \
+cfn="$EDITOR ~/.config/newsboat/config" \
+cfmb="$EDITOR ~/.config/ncmpcpp/bindings" \
+cfmc="$EDITOR ~/.config/ncmpcpp/config" \
+cfsx="$EDITOR ~/.config/sxhkd/sxhkdrc" \
+dwmc="$EDITOR ~/programs/dwm/dwm.c" \

@@ -48,6 +48,10 @@ echo -ne '\e[5 q'
 # Use beam shape cursor for each new prompt.
 preexec() { echo -ne '\e[5 q' ;}
 
+# Edit line with ctrl-e in vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"

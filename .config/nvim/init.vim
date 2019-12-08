@@ -13,6 +13,7 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'tpope/vim-unimpaired'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
 Plug 'pangloss/vim-javascript'
@@ -95,23 +96,6 @@ set viminfo+=n~/.config/nvim/viminfo
 " Toggle Auto indent
 	set pastetoggle=<F2>
 
-" Jumps config
-	function! GotoJump()
-	  jumps
-	  let j = input("Please select your jump: ")
-	  if j != ''
-	    let pattern = '\v\c^\+'
-	    if j =~ pattern
-	      let j = substitute(j, pattern, '', 'g')
-	      execute "normal " . j . "\<c-i>"
-      	    else
-	      execute "normal " . j . "\<c-o>"
-	    endif
-	  endif
-	endfunction
-
-	nmap <leader>j :call GotoJump()<CR>
-
 " Automatically deletes all trailing whitespace on save.
 	autocmd BufWritePre * %s/\s\+$//e
 
@@ -119,7 +103,7 @@ set viminfo+=n~/.config/nvim/viminfo
 	autocmd BufWritePost *.config/directories,*.config/files !shortcuts
 
 " When suckless files are update, install then
-  autocmd BufWritePost *dwm.*,*dmenu.*,*st.* !make install clean
+  autocmd BufWritePost *dwmc,*dwm.*,*dmenu.*,*st.* !make install clean
 
 " Restart dwmstatus when updated
   autocmd BufWritePost *dwmstatus.* !make install clean; pkill dwmstatus; dwmstatus &> /dev/null &

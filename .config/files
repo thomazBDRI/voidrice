@@ -1,5 +1,9 @@
+# default scripts
 bf	~/.config/files
 bd	~/.config/directories
+
+
+# config files
 cfa	~/.config/aliasrc
 cfz	~/.config/zsh/.zshrc
 cfv	~/.config/nvim/init.vim
@@ -8,4 +12,6 @@ cfn	~/.config/newsboat/config
 cfmb	~/.config/ncmpcpp/bindings
 cfmc	~/.config/ncmpcpp/config
 cfsx ~/.config/sxhkd/sxhkdrc
+
+# programs
 dwmc ~/programs/dwm/dwm.c

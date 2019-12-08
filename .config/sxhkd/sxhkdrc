@@ -2,8 +2,8 @@
 super + Return
 	$TERMINAL
 
-super + d ; {d, w}
-	{dmenu_run, firefox}
+super + d ; {d, w, p}
+	{dmenu_run, firefox, flatpakrun}
 
 super + t ;    {r,     m,       n,        y,                shift + a, w}
   $TERMINAL -e {$FILE, ncmpcpp, newsboat, htop -t -u $USER, alsamixer; pkill -USR1 dwmstatus, nvim -c VimwikiIndex}

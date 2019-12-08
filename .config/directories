@@ -12,6 +12,11 @@ im	~/images
 dot ~/dotfiles
 
 
+# Scripts
+lb ~/.local/bin
+lbt ~/.local/bin/tools
+
+
 # Enviroments and repos
 jus	~/work
 zoni ~/freelance/zoni
@@ -22,3 +27,5 @@ zad ~/freelance/zoni/database
 
 # Programs and Repos
 dwm ~/programs/dwm
+dwmst ~/programs/dwmstatus
+st ~/programs/st

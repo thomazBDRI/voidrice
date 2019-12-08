@@ -1,0 +1,5 @@
+#!/bin/sh
+
+
+# List and run flatpak apps
+flatpak --user run $(flatpak --user list --app --columns=application | tail -n+1 | dmenu -i)

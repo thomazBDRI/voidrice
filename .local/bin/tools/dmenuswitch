@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# List to dmenu and swith to selected window
+wmctrl -a $(wmctrl -l | awk '{print substr($0, index($0,$4))}' | dmenu -i -p "Window")

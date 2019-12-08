@@ -9,6 +9,7 @@ vv	~/videos
 cf	~/.config
 mn	/mnt
 im	~/images
+dot ~/dotfiles
 
 
 # Enviroments and repos

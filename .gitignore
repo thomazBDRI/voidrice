@@ -7,3 +7,7 @@ flatpak/
 .local/share/newsboat/cache.db
 viminfo
 .config/gcloud/
+.config/pulse
+.local/bin/programs
+.config/shortcutrc
+.config/vifm/vifmshortcuts

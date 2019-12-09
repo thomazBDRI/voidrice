@@ -52,6 +52,9 @@ preexec() { echo -ne '\e[5 q' ;}
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# Bash ctrl + r history search
+bindkey '^R' history-incremental-pattern-search-backward
+
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"

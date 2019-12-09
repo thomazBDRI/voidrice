@@ -14,4 +14,4 @@ cfmc	~/.config/ncmpcpp/config
 cfsx ~/.config/sxhkd/sxhkdrc
 
 # programs
-dwmc ~/programs/dwm/dwm.c
+fdwmc ~/programs/dwm/dwm.c

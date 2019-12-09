@@ -11,3 +11,4 @@ viminfo
 .local/bin/programs
 .config/shortcutrc
 .config/vifm/vifmshortcuts
+.config/hub

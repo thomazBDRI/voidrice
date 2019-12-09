@@ -40,6 +40,7 @@ set clipboard=unnamedplus
 	set expandtab
 	set shiftwidth=2
 	set smarttab
+  set hidden
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -55,15 +56,29 @@ set clipboard=unnamedplus
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
+  tnoremap <C-h> <C-\><C-N><C-w>h
+  tnoremap <C-j> <C-\><C-N><C-w>j
+  tnoremap <C-k> <C-\><C-N><C-w>k
+  tnoremap <C-l> <C-\><C-N><C-w>l
+  inoremap <C-h> <C-\><C-N><C-w>h
+  inoremap <C-j> <C-\><C-N><C-w>j
+  inoremap <C-k> <C-\><C-N><C-w>k
+  inoremap <C-l> <C-\><C-N><C-w>l
 
 " Remove .viminfo from home
-set viminfo+=n~/.config/nvim/viminfo
+  set viminfo+=n~/.config/nvim/viminfo
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
 
 " Execute the run.sh file inside the repository
-    map <leader>c :w! \| !run.sh <CR>
+  map <leader>c :w! \| !run.sh <CR>
+
+" Open terminal below
+  map <leader>v :w! \| split \| terminal <CR>
+
+" Exit terminal window in human way Ctrl + N
+  tnoremap <C-n> <C-\><C-n>:q<CR>
 
 " Open corresponding .pdf/.html or preview
 	map <leader>o :!opout <c-r>%<CR><CR>

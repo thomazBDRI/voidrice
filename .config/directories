@@ -19,6 +19,7 @@ lbt ~/.local/bin/tools
 
 # Enviroments and repos
 jus	~/work
+jsco ~/work/repos/scooby
 zoni ~/freelance/zoni
 zap ~/freelance/zoni/api
 zaa ~/freelance/zoni/admin
@@ -26,6 +27,6 @@ zad ~/freelance/zoni/database
 
 
 # Programs and Repos
-dwm ~/programs/dwm
-dwmst ~/programs/dwmstatus
-st ~/programs/st
+ddwm ~/programs/dwm
+ddwmst ~/programs/dwmstatus
+dst ~/programs/st

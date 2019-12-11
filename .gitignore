@@ -12,3 +12,4 @@ viminfo
 .config/shortcutrc
 .config/vifm/vifmshortcuts
 .config/hub
+.local/share

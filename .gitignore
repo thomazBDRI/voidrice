@@ -1,0 +1,6 @@
+.netrwhist
+.config/nvim/plugged/
+.config/nvim/autoload/
+.config/vifm/vifmshortcuts
+.config/zsh/.zcompdump
+.local/share/nvim

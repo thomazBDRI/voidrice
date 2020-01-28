@@ -20,6 +20,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-unimpaired'
 Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-rooter'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 set bg=light
@@ -30,30 +31,33 @@ set clipboard+=unnamedplus
 set cursorline
 
 " Some basics:
-	nnoremap c "_c
-	set nocompatible
-	filetype plugin on
-	syntax on
-	set encoding=utf-8
-	set number relativenumber
+  nnoremap c "_c
+  set nocompatible
+  filetype plugin on
+  syntax on
+  set encoding=utf-8
+  set number relativenumber
 
 " Tab config
-set tabstop=4
-set expandtab
-set shiftwidth=2
-set autoindent
+  set tabstop=4
+  set expandtab
+  set shiftwidth=2
+  set autoindent
 
 " Enable autocompletion:
-	set wildmode=longest,list,full
+  set wildmode=longest,list,full
 
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+  map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+  map <leader>o :setlocal spell! spelllang=en_us<CR>
+
+" Signify configurations
+  set updatetime=100
 
 " Execute the run.sh file inside the repository
   map <leader>c :w! \| !run.sh <CR>
@@ -83,6 +87,16 @@ set autoindent
 
 	map <leader>pb :CtrlPBuffer<CR>
 	map <leader>pt :CtrlPTag<CR>
+
+" Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
@@ -132,12 +146,6 @@ set autoindent
 	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
-
-" Enable Goyo by default for commit writting
-	autocmd BufRead,BufNewFile COMMIT_EDITMSG let g:goyo_width=80
-	autocmd BufRead,BufNewFile COMMIT_EDITMSG :Goyo | set bg=light
-	autocmd BufRead,BufNewFile COMMIT_EDITMSG map ZZ :Goyo\|x!<CR>
-	autocmd BufRead,BufNewFile COMMIT_EDITMSG map ZQ :Goyo\|q!<CR>
 
 " Automatically deletes all trailing whitespace on save.
 	autocmd BufWritePre * %s/\s\+$//e

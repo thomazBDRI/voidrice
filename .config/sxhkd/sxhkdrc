@@ -1,0 +1,223 @@
+# apps
+super + Return
+  $TERMINAL
+
+super + d ; {d, w, p}
+  {dmenu_run, firefox, flatpakrun}
+
+super + t ;    {r,     m,       n,        y,                shift + a, w}
+  $TERMINAL -e {$FILE, ncmpcpp, newsboat, htop -t -u $USER, alsamixer; pkill -USR1 dwmstatus, nvim -c VimwikiIndex}
+
+# dwm
+super + {k,j}
+  dwmc focusstack {-1,1}
+
+super + shift + {k,j}
+  dwmc movestack {-1,1}
+
+super + {h,l}
+  dwmc setmfact {-0.05,0.05}
+
+super + b
+  dwmc togglebar
+
+super + shift + space
+  dwmc togglefloating
+
+super + q
+  dwmc killclient
+
+super + f ; {t,f,m,c,v}
+  dwmc setlayoutex {0,1,2,3,4}
+
+super + {1-9}
+  dwmc viewex {0-8}
+
+super + ctrl + {1-9}
+  dwmc toggleviewex {0-8}
+
+super + shift + {1-9}
+  dwmc tagex {0-8}
+
+super + ctrl + shift + {1-9}
+  dwmc toggletagex {0-8}
+
+super + {o,i}
+  dwmc incnmaster {-,+}1
+
+super + s
+  dwmc zoom
+
+super + shift + {comma, period}
+  dwmc tagmon {-,+}1
+
+super + ctrl + shift + 0
+  dwmc tagall
+
+super + 0
+  dwmc viewall
+
+super + g; {minus,plus, t, d}
+  dwmc setgaps {-1, +1, 0, 8}
+
+# Removed for skip songs while i do not use second monitor
+#super + {comma, period}
+# dwmc focusmon {-,+}1
+
+# Et cetera...
+
+super + Tab
+  dmenuswitch
+
+super + Insert
+  showclip
+
+super + shift + Escape
+  prompt 'Leave Xorg?' 'killall Xorg'
+
+XF86Launch1
+  xset dpms force off
+
+XF86TouchpadToggle
+  (synclient | grep "TouchpadOff.*1" && synclient TouchpadOff=0) || synclient TouchpadOff=1
+
+XF86Touchpad{Off,On}
+  synclient TouchpadOff={1,0}
+
+# Recording
+# Take screenshot
+Print
+  maim "/home/$USER/images/screenshots/$(date '+%y%m%d-%H%M').png"
+
+# Pick screenshot type
+shift + Print
+  maimpick
+
+# Print: Record audio or video; Del: kill recording
+super + Print
+  dmenurecord
+
+super + Delete
+  dmenurecord kill
+
+# Pause audio
+super + p
+  mpc toggle
+
+super + shift + p
+  mpc pause; pauseallmpv
+
+# Changes to next/previous tracks
+super + {comma,period}
+  mpc {prev,next}
+
+# Restart track
+super + shift + less
+  mpc seek 0%
+
+# Seek foward in song
+super + {_,shift +} bracketright
+  mpc seek +{10,120}
+
+# Seek backward in song
+super + {_,shift +} bracketleft
+  mpc seek -{10,120}
+
+# Increase volume
+super + {equal,plus}
+	amixer sset Master {5,15}%+; pkill -RTMIN+10 $STATUSBAR
+
+# Decrease volume
+super {_,shift +} + minus
+  amixer sset Master {5,15}%-; pkill -USR1 dwmstatus
+
+super + shift + m
+  amixer sset Master toggle; pkill -USR1 dwmstatus
+
+# Audiokeys
+XF86AudioMute
+  amixer sset Master toggle
+
+XF86Audio{Raise,Lower}Volume
+  amixer sset Master 5%{+,-}; pkill -USR1 dwmstatus
+
+XF86Audio{Next,Prev}
+  mpc {next,prev}
+
+XF86Audio{Pause,Play,Stop}
+  mpc {pause,play,stop}
+
+XF86Audio{Rewind,Forward}
+  mpc seek {-,+}10
+
+XF86AudioRecord
+  dmenurecord
+
+XF86AudioMedia
+  $TERMINAL -e ncmpcpp
+
+XF86PowerOff
+  prompt "Shutdown computer?" "sudo -A shutdown -h now"
+
+XF86Calculator
+  $TERMINAL -e bc
+
+XF86Sleep
+  prompt 'Hibernate computer?' 'sudo -A zzz'
+
+XF86WWW
+  $BROWSER
+
+XF86DOS
+  $TERMINAL
+
+XF86ScreenSaver
+  mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+
+XF86TaskPane
+  $TERMINAL -e htop
+
+XF86Mail
+  $TERMINAL -e neomutt
+
+XF86MyComputer
+  $TERMINAL -e $FILE /
+
+XF86MonBrightnessUp
+  relbacklight 0.1
+
+XF86MonBrightnessDown
+  relbacklight -0.1
+
+
+# Function keys
+
+# TODO: Update it to my help (maybe vimwiki here?)
+# Show readme
+# super + F1
+#   groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
+
+# Restart dwm
+super + F2
+  dwmc quit
+
+# Change display
+super + F3
+  displayselect
+
+super + F4
+  prompt "Shutdown computer?" "sudo -A shutdown -h now"
+
+# Hibernate
+super + F5
+  prompt 'Hibernate computer?' 'sudo -A ZZZ'
+
+super + F6
+  $TERMINAL -e wpa_cli
+
+super + F12
+  dmenuunicode
+
+# Mount a USB drive or Android device
+super + {F9,F10}
+	{dmenumount,dmenuumount}

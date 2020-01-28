@@ -1,0 +1,18 @@
+# default scripts
+bf	~/.config/files
+bd	~/.config/directories
+
+
+# config files
+cfa	~/.config/aliasrc
+cfz	~/.config/zsh/.zshrc
+cfv	~/.config/nvim/init.vim
+cfu	~/.config/newsboat/urls
+cfn	~/.config/newsboat/config
+cft ~/.tmux.conf
+cfmb	~/.config/ncmpcpp/bindings
+cfmc	~/.config/ncmpcpp/config
+cfsx ~/.config/sxhkd/sxhkdrc
+
+# programs
+fdwmc ~/programs/dwm/dwm.c

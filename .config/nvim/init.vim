@@ -35,12 +35,12 @@ set clipboard=unnamedplus
 	syntax on
 	set encoding=utf-8
 	set number relativenumber
-	set tabstop=2
-	set softtabstop=0
-	set expandtab
-	set shiftwidth=2
-	set smarttab
-  set hidden
+
+" Tab config
+set tabstop=4
+set expandtab
+set shiftwidth=2
+set autoindent
 
 " Enable autocompletion:
 	set wildmode=longest,list,full

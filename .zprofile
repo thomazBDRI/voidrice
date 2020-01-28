@@ -12,7 +12,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
-export FILE="lf"
+export FILE="vifm"
 
 # ~/ Clean-up:
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
@@ -22,6 +22,7 @@ export INPUTRC="$HOME/.config/inputrc"
 export ZDOTDIR="$HOME/.config/zsh"
 export TASKDATA="$HOME/.config/task"
 export TASKRC="$TASKDATA/taskrc"
+
 # export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 
 # Other program settings:

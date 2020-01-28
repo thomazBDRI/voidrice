@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+mon=$(xrandr | awk 'NR==2 { print $1}')
+
+choice=$(echo "1.0" | dmenu -p value)
+
+xrandr --output $mon --brightness $choice

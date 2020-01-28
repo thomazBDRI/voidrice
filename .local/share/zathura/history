@@ -38,3 +38,29 @@ position-x=0.5
 position-y=0.16666666666666663
 time=1575584957
 jumplist=2 0.70976616231086653 0.79455605962410858 0 0.5 0.16666666666666663 
+
+[/home/thomaz/downloads/Tech infra (v2).pdf]
+page=0
+offset=0
+zoom=1.9487171000000014
+rotate=0
+pages-per-row=1
+first-page-column=1:2
+page-right-to-left=false
+position-x=0.61832061068702304
+position-y=0.57957156275025123
+time=1576874874
+jumplist=
+
+[/home/thomaz/.var/app/org.telegram.desktop/cache/Telegram Desktop/bergamaschi_2016_Keyword_Based_Search.pdf]
+page=24
+offset=0
+zoom=0.7899900741519239
+rotate=0
+pages-per-row=1
+first-page-column=1:2
+page-right-to-left=false
+position-x=0.90043923865300146
+position-y=0.13259393752919732
+time=1579103843
+jumplist=0 0.5 0.0033097138183746625 13 0.5 0.072972972972972977 13 0.099560761346998539 0.072972972972972977 27 0.5 0.14864864864864866 

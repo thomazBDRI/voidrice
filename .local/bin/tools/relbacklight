@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+bcur=$(xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' ')
+mon=$(xrandr | awk 'NR==2 { print $1}')
+
+v=$(($1 + $bcur))
+
+xrandr --output $mon --brightness $v

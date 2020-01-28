@@ -13,3 +13,4 @@ viminfo
 .config/vifm/vifmshortcuts
 .config/hub
 .local/share
+configstore/

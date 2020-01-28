@@ -14,9 +14,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/thomaz
-	downloads
-3
 d/home/thomaz/downloads
 	%SystemDrive%
 1
@@ -57,6 +54,9 @@ d/home/thomaz/downloads
 	..
 0
 d/home/thomaz/games/top4/drive_c/Program Files/Tales_of_Pirates_PC_Client
+	..
+0
+d/home/thomaz/downloads
 	..
 0
 

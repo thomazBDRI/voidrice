@@ -183,6 +183,13 @@ XF86Mail
 XF86MyComputer
 	$TERMINAL -e $FILE /
 
+XF86MonBrightnessUp
+  relbacklight 0.1
+
+XF86MonBrightnessDown
+  relbacklight -0.1
+
+
 # Function keys
 
 # TODO: Update it to my help (maybe vimwiki here?)

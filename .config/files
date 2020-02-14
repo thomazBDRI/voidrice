@@ -13,6 +13,8 @@ cft ~/.tmux.conf
 cfmb	~/.config/ncmpcpp/bindings
 cfmc	~/.config/ncmpcpp/config
 cfsx ~/.config/sxhkd/sxhkdrc
+cfzp ~/.zprofile
+cfxp ~/.xprofile
 
 # programs
 fdwmc ~/programs/dwm/dwm.c

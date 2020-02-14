@@ -11,6 +11,8 @@ for x in mount umount sv pacman updatedb su ; do
 	alias $x="sudo $x"
 done
 
+command -v hub >/dev/null && eval "$(hub alias -s)"
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \

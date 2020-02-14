@@ -1,8 +1,8 @@
 # Luke's config for the Zoomer Shell
 
-# Enable colors and change prompt:
-autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+autoload -U colors && colors
+PS1="%{$fg[magenta]%}%~ %{$reset_color%}$%b "
+#PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
@@ -54,6 +54,13 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Edit line with ctrl-e in vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# Bash ctrl + r history search
+bindkey '^R' history-incremental-pattern-search-backward
 
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {

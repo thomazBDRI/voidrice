@@ -2,6 +2,7 @@
 
 # Use neovim for vim if present.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+command -v hub >/dev/null && eval "$(hub alias -s)"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \

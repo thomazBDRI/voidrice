@@ -1,0 +1,6 @@
+.git
+dist
+bower_components
+node_modules
+.venv
+__pycache__

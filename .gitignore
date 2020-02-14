@@ -4,3 +4,8 @@
 .config/vifm/vifmshortcuts
 .config/zsh/.zcompdump
 .local/share/nvim
+.config/mpd/database
+.config/mpd/log
+.config/mpd/pid
+.config/mpd/state
+.config/mpd/sticker.sql

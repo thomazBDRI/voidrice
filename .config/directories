@@ -2,9 +2,10 @@
 
 # Normal stuff
 h	~/
-D	~/downloads
-m	~/music
-p ~/programs
+D	~/Downloads
+b   ~/books
+m	~/musics
+pr ~/programs
 vv	~/videos
 cf	~/.config
 mn	/mnt
@@ -14,19 +15,22 @@ dot ~/dotfiles
 
 # Scripts
 lb ~/.local/bin
-lbt ~/.local/bin/tools
 
 
 # Enviroments and repos
-jus	~/work
-jsco ~/work/repos/scooby
-zoni ~/freelance/zoni
-zap ~/freelance/zoni/api
-zaa ~/freelance/zoni/admin
-zad ~/freelance/zoni/database
+jus	~/envs/jus
+jsco ~/envs/jus/repos/scooby
+
+zoni ~/envs/zoni
+zap ~/envs/zoni/repos/api
+zaa ~/envs/zoni/repos/admin
+zad ~/envs/zoni/repos/database
 
 
 # Programs and Repos
 ddwm ~/programs/dwm
 ddwmst ~/programs/dwmstatus
 dst ~/programs/st
+
+# Aur
+daur ~/aur

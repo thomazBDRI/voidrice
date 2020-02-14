@@ -18,6 +18,8 @@ se() {
 	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
 	;}
 
+command -v hub >/dev/null && eval "$(hub alias -s)"
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \

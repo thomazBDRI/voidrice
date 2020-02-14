@@ -23,7 +23,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-unimpaired'
 Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-rooter'
-Plug 'vim-syntastic/syntastic'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 set title
@@ -102,7 +102,10 @@ set cursorline
 
 >>>>>>> ebc9118 (Bring some files from backup to new module)
 " Execute the run.sh file inside the repository
-  map <leader>c :w! \| !run.sh <CR>
+  map <leader>c :w! \| !./run.sh %<CR>
+
+" Jsx config
+  let g:jsx_improve_motion_disable = 0
 
 " CtrlP config
 	let g:ctrlp_working_path_mode = 'ra'
@@ -127,18 +130,13 @@ set cursorline
 	      let &laststatus=g:laststatus_last_value
       	endfunction
 
-	map <leader>pb :CtrlPBuffer<CR>
-	map <leader>pt :CtrlPTag<CR>
+	map <leader>b :CtrlPBuffer<CR>
+	map <leader>t :CtrlPTag<CR>
 
 " Syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
@@ -242,7 +240,8 @@ let g:syntastic_check_on_wq = 0
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
 " When suckless files are update, install then
-  autocmd BufWritePost *dwmc,*dwm.*,*dmenu.*,*st.* !make install clean
+" FIXME: Removing because it was trigeering on list.py file
+" autocmd BufWritePost *dwmc,*dwm.*,*dmenu.*,*st.* !make install clean
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff

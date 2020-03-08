@@ -5,6 +5,7 @@ h	~/
 D	~/Downloads
 b   ~/books
 m	~/musics
+ga  ~/games
 pr ~/programs
 vv	~/videos
 cf	~/.config
@@ -31,6 +32,7 @@ zad ~/envs/zoni/repos/database
 ddwm ~/programs/dwm
 ddwmst ~/programs/dwmstatus
 dst ~/programs/st
+ddmenu ~/programs/dmenu
 
 # Aur
 daur ~/aur

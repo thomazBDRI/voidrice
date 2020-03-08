@@ -65,7 +65,7 @@ super + g; {minus,plus, t, d}
 # dwmc focusmon {-,+}1
 
 # Et cetera...
-super + grave
+super + f11
 	dmenuunicode
 super + Scroll_Lock
 	killall screenkey || screenkey

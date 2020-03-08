@@ -1,4 +1,4 @@
-let mapleader =","
+let mapleader =" "
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -15,15 +15,28 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
+<<<<<<< HEAD
 Plug 'vim-airline/vim-airline'
+||||||| parent of bd603d9 (Added a lot of fzf stuff on zsh)
+Plug 'bling/vim-airline'
+=======
+>>>>>>> bd603d9 (Added a lot of fzf stuff on zsh)
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'kovetskiy/sxhkd-vim'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-unimpaired'
 Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-rooter'
-Plug 'pangloss/vim-javascript'
+Plug 'chemzqm/vim-jsx-improve'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/fzf'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/echodoc.vim'
 call plug#end()
 
 set title
@@ -133,10 +146,49 @@ set cursorline
 	map <leader>b :CtrlPBuffer<CR>
 	map <leader>t :CtrlPTag<CR>
 
-" Syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" LSP Configs
+let g:LanguageClient_serverCommands = {
+    \ 'java': ['/home/thomaz/.local/bin/jdtls', '-data', getcwd()],
+    \ 'bash': ['/usr/bin/bash-language-server', 'start' ],
+    \ 'dockerfile': ['/usr/bin/docker-langserver', '--stdio' ],
+    \ 'typescript': ['/usr/bin/typescript-language-server', '--stdio'],
+    \ 'javascript': ['/usr//bin/typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['/usr/bin/typescript-language-server', '--stdio'],
+    \ 'javascript.jsx': ['/usr/bin/typescript-language-server', '--stdio'],
+    \ 'python': ['/usr/bin/pyls'],
+    \ 'make': ['/usr/bin/cmake-language-server'],
+    \ 'groovy': ['/usr/bin/java', '-jar', '/usr/share/java/groovy-language-server/groovy-language-server.jar'],
+    \ 'php': ['/usr/bin/php-language-server'],
+    \ 'c': ['/usr/bin/ccls'],
+    \ 'cpp': ['/usr/binccls'],
+    \ 'cuda': ['/usr/bin/ccls'],
+    \ 'objc': ['/usr/bin/ccls'],
+    \ 'xml': ['/usr/bin/xml-language-server'],
+    \ 'yaml': ['/usr/bin/yaml-language-server', '--stdio'],
+    \ }
+
+let g:LanguageClient_loggingLevel = 'DEBUG'
+
+nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+
+" Always draw the signcolumn.
+set signcolumn=yes
+set hidden
+
+
+" echodoc
+set cmdheight=2
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
@@ -180,7 +232,7 @@ set statusline+=%*
 
 " Tags config
 	set tags=./.tags;
-	map <leader>ut :!ctags -R --exclude=@~/.config/nvim/.ctagsignore .<CR><CR>
+	map <leader>ut :!ctags -R --exclude=@/home/thomaz/.config/nvim/ctagsignore .<CR><CR>
 
 " Toggle Auto indent
 	set pastetoggle=<F2>

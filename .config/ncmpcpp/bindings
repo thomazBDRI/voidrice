@@ -475,5 +475,7 @@ def_key "f"
   change_browse_mode
 def_key "x"
   delete_playlist_items
+def_key "x"
+  delete_browser_items
 def_key "P"
   show_playlist

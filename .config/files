@@ -15,6 +15,7 @@ cfmc	~/.config/ncmpcpp/config
 cfsx ~/.config/sxhkd/sxhkdrc
 cfzp ~/.zprofile
 cfxp ~/.xprofile
+cfsxi ~/.config/sxiv/exec/key-handler
 
 # programs
 fdwmc ~/programs/dwm/dwm.c

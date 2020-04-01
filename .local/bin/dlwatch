@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+while true; do
+ls -d ~/Downloads/* | entr -d -n dlorg
+done

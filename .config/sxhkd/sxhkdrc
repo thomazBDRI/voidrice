@@ -2,10 +2,10 @@
 super + Return
   $TERMINAL
 
-super + d ; {d, w, y}
-  {dmenu_run, firefox, ytmusicdl}
+super + d ; {d, b, y, i, w}
+  {dmenu_run, firefox, ytmusicdl, sxivimg, wp}
 
-super + t ;    {r,     m,       n,        y,                shift + a, w,                                         e}
+super + t ;    {r,     m,       n,        y,                shift + a,						 w,                     e}
   $TERMINAL -e {$FILE, ncmpcpp, newsboat, htop -t -u $USER, alsamixer; pkill -USR1 dwmstatus, nvim -c VimwikiIndex, neomutt}
 
 # dwm

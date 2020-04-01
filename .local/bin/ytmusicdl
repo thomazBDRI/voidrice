@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+if [ -z "$1" ]
+then
+  choice=$(echo "URL (CTRL+Y paste)" | dmenu)
+else
+  choice=$1
+fi
+
+! echo "$choice" | grep "https://.*youtu.*" >/dev/null &&
+	notify-send "That doesn't look like a full URL." && exit
+
+cd ~/musics/Downloaded/
+
+youtube-dl --add-metadata -ix --audio-format "best" "$choice"
+
+notify-send "Music downloaded"

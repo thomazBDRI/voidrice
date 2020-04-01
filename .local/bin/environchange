@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+choice=$(ls -1 $ENVSPATH | dmenu)
+
+[ -z $choice ] && exit 1;
+
+p="${ENVSPATH}/${choice}"
+sfile="${p}/.venv/bin/activate"
+
+. $sfile
+cd $p

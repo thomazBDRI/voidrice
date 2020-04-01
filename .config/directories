@@ -10,9 +10,14 @@ pr ~/programs
 vv	~/videos
 cf	~/.config
 mn	/mnt
-im	~/images
 dot ~/dotfiles
 
+# {{{ Images
+im	~/images
+imsc ~/images/screenshots
+imwa ~/images/wallpapers
+imwaa ~/images/wallpapers/anime
+#}}}
 
 # Scripts
 lb ~/.local/bin

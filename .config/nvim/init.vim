@@ -174,7 +174,10 @@ set cursorline
 " FZF configuration
 let g:fzf_nvim_statusline = 0 " disable statusline overwriting
 
-  nnoremap <silent> <leader><space> :Files<CR>
+  nnoremap <silent> <leader><space>lb :Files /home/thomaz/.local/bin<CR>
+  nnoremap <silent> <leader><space>cf :Files /home/thomaz/.config<CR>
+  nnoremap <silent> <leader><space>h :Files /home/thomaz<CR>
+  nnoremap <silent> <leader><space>. :Files<CR>
   nnoremap <silent> <leader>a :Buffers<CR>
   nnoremap <silent> <leader>A :Windows<CR>
   nnoremap <silent> <leader>; :BLines<CR>
@@ -225,6 +228,7 @@ let g:UltiSnipsJumpBackwardTrigger="<LEFT>"
 let g:LanguageClient_serverCommands = {
     \ 'java': ['/home/thomaz/.local/bin/jdtls', '-data', getcwd()],
     \ 'bash': ['/usr/bin/bash-language-server', 'start' ],
+    \ 'zsh': ['/usr/bin/bash-language-server', 'start' ],
     \ 'sh': ['/usr/bin/bash-language-server', 'start' ],
     \ 'dockerfile': ['/usr/bin/docker-langserver', '--stdio' ],
     \ 'typescript': ['/usr/bin/typescript-language-server', '--stdio'],
@@ -236,7 +240,7 @@ let g:LanguageClient_serverCommands = {
     \ 'groovy': ['/usr/bin/java', '-jar', '/usr/share/java/groovy-language-server/groovy-language-server.jar'],
     \ 'php': ['/usr/bin/php-language-server'],
     \ 'c': ['/usr/bin/ccls'],
-    \ 'cpp': ['/usr/binccls'],
+    \ 'cpp': ['/usr/bin/ccls'],
     \ 'cuda': ['/usr/bin/ccls'],
     \ 'objc': ['/usr/bin/ccls'],
     \ 'xml': ['/usr/bin/xml-language-server'],

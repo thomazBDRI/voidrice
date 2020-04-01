@@ -155,20 +155,25 @@ fo() (
   fi
 )
 
-# fe [FUZZY PATTERN] - Open the selected file with the default editor
-#   - Bypass fuzzy finder if there's only one match (--select-1)
-#   - Exit if there's no match (--exit-0)
-# Modified version where you can press
-#   - CTRL-O to open with `open` command,
-#   - CTRL-E or Enter key to open with the $EDITOR
-fb() (
-  IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
-  key=$(head -1 <<< "$out")
-  file=$(head -2 <<< "$out" | tail -1)
-  if [ -n "$file" ]; then
-    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
-  fi
-)
+
+# Declare function to open files from directories in `.config/directories`
+# with fzf, the name for each function is fz`shortcut`
+
+directories=$(sed "s/\s*#.*$//;/^\s*$/d;s/\t/ /;s/  \+/ /" "$HOME/.config/directories")
+
+while read -r line; do
+  name="fz$(echo "$line" | cut -d' ' -f1)"
+  folder="$(echo "$line" | cut -d' ' -f2 | sed "s|\~|$HOME|;s/\/$//")"
+  eval "$name() {
+    IFS=$'\n' out=(\"\$(find $folder/ -type f | fzf-tmux --preview=\"bat --color=always {}\" --query=\"\$1\" --exit-0 --expect=ctrl-o,ctrl-e)\")
+    key=\$(head -1 <<< \"\$out\")
+    file=\$(head -2 <<< \"\$out\" | tail -1)
+    if [ -n \"\$file\" ]; then
+      [ \"\$key\" = ctrl-o ] && xdg-open \"\$file\" || \${EDITOR:-vim} \"\$file\"
+    fi
+  }"
+done <<< "$directories"
+
 
 # Marker
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"

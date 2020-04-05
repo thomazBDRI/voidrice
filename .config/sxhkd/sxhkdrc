@@ -2,8 +2,8 @@
 super + Return
   $TERMINAL
 
-super + d ; {d, b, y, i, w}
-  {dmenu_run, firefox, ytmusicdl, sxivimg, wp}
+super + d ; {d, b, y, i, w, g}
+  {dmenu_run, firefox, ytmusicdl, sxivimg, wp, dmenugl}
 
 super + t ;    {r,     m,       n,        y,                shift + a,						 w,                     e}
   $TERMINAL -e {$FILE, ncmpcpp, newsboat, htop -t -u $USER, alsamixer; pkill -USR1 dwmstatus, nvim -c VimwikiIndex, neomutt}
@@ -23,6 +23,9 @@ super + b
 
 super + shift + space
   dwmc togglefloating
+
+super + shift + {period, comma}
+  dwmc togglefloating; hover {right, left}
 
 super + q
   dwmc killclient
@@ -58,7 +61,7 @@ super + f ; {t,f,m,c,v}
   dwmc setlayoutex {0,1,2,3,4}
 
 super + g ; {minus,plus, t, d}
-  dwmc setgaps {-1, +1, 0, 8}
+  dwmc setgaps {-2, +2, 0, 8}
 
 # Removed for skip songs while i do not use second monitor
 #super + {comma, period}

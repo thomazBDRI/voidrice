@@ -35,7 +35,7 @@ zad ~/envs/zoni/repos/database
 
 # Programs and Repos
 ddwm ~/programs/dwm
-ddwmst ~/programs/dwmstatus
+ddwmbl ~/programs/dwmblocks
 dst ~/programs/st
 ddmenu ~/programs/dmenu
 

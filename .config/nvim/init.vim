@@ -83,6 +83,7 @@ Plug 'tpope/vim-fugitive'
 
   nnoremap <silent> <leader>gs :Gstatus<CR>
   nnoremap <silent> <leader>gd :Gdiff<CR>
+  nnoremap <silent> <leader>gl :Gllog<CR>
   nnoremap <silent> <leader>gc :Gcommit<CR>
   nnoremap <silent> <leader>gb :Gblame<CR>
   nnoremap <silent> <leader>ge :Gedit<CR>
@@ -121,7 +122,7 @@ Plug 'airblade/vim-gitgutter'
   let g:gitgutter_diff_args = '--ignore-space-at-eol'
   nmap <silent> ]h :GitGutterNextHunk<CR>
   nmap <silent> [h :GitGutterPrevHunk<CR>
-  nnoremap <silent> <Leader>gu :GitGutterRevertHunk<CR>
+  nnoremap <silent> <Leader>gu :GitGutterUndoHunk<CR>
   nnoremap <silent> <Leader>gp :GitGutterPreviewHunk<CR><c-w>j
   nnoremap cog :GitGutterToggle<CR>
   nnoremap <Leader>gt :GitGutterAll<CR>
@@ -218,6 +219,11 @@ let g:fzf_nvim_statusline = 0 " disable statusline overwriting
   endfunction
   command! -nargs=+ -complete=dir AgIn call SearchWithAgInDirectory(<f-args>)
 
+
+" Location and Quick list
+noremap <F12> :ccl <bar> lcl <bar> pc<CR>
+noremap <F11> :cw<CR>
+noremap <F10> :lw<CR>
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"

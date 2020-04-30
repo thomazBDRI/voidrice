@@ -8,7 +8,7 @@ gamepath=$HOME/games
 
 case "$1" in
   native*)
-    prime-run $gamepath/$1 ;;
+    prime-run "$gamepath/$1" ;;
   steam*)
     xargs steam -applaunch < $gamepath/$1 ;;
   playonlinux*)

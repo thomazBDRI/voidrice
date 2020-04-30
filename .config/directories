@@ -5,7 +5,6 @@ h	~/
 D	~/Downloads
 b   ~/books
 m	~/musics
-ga  ~/games
 pr ~/programs
 vv	~/videos
 cf	~/.config
@@ -18,6 +17,13 @@ imsc ~/images/screenshots
 imwa ~/images/wallpapers
 imwaa ~/images/wallpapers/anime
 #}}}
+
+# {{{ Games
+dg  ~/games
+dgn ~/games/native
+dgs ~/games/steam
+dgn ~/games/n64
+# }}}
 
 # Scripts
 lb ~/.local/bin

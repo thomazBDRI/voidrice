@@ -18,6 +18,7 @@ export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
 export STATUSBAR="${LARBSWM}blocks"
+export FILE="lf"
 
 # ~/ Clean-up:
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.

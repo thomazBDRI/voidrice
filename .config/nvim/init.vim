@@ -7,12 +7,20 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	autocmd VimEnter * PlugInstall
 endif
 
+<<<<<<< HEAD
 map ,, :keepp /<++><CR>ca<
 imap ,, <esc>:keepp /<++><CR>ca<
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+||||||| parent of 96a96c8 (added Ansible configuration)
+call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+=======
+call plug#begin('~/.config/nvim/plugged')
+" {{{ Quick Edits
+>>>>>>> 96a96c8 (added Ansible configuration)
 Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
+<<<<<<< HEAD
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
@@ -22,25 +30,63 @@ Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-airline'
 =======
 >>>>>>> bd603d9 (Added a lot of fzf stuff on zsh)
+||||||| parent of 96a96c8 (added Ansible configuration)
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'jreybert/vimagit'
+Plug 'vimwiki/vimwiki'
+=======
+>>>>>>> 96a96c8 (added Ansible configuration)
 Plug 'tpope/vim-commentary'
-Plug 'ap/vim-css-color'
+" }}}
+
+" {{{ Syntax
+Plug 'PotatoesMaster/i3-vim-syntax'
+>>>>>>> 9a0de94 (added Ansible configuration)
 Plug 'kovetskiy/sxhkd-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-unimpaired'
-Plug 'airblade/vim-rooter'
 Plug 'chemzqm/vim-jsx-improve'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'sheerun/vim-polyglot'
+" }}}
+
+" {{{ Motions and File/Buffer Motions
+Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/echodoc.vim'
-Plug 'zxqfl/tabnine-vim'
 
-Plug 'tpope/vim-dispatch'
+Plug 'unblevable/quick-scope'
+" {{{
+  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+  highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+"}}}
+
+" }}}
+
+" {{{ Visual
+Plug 'ap/vim-css-color' " Try adding hex colors
+Plug 'vim-airline/vim-airline'
+
+Plug 'vim-airline/vim-airline-themes'
+" {{{ Airline Configs
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline_theme='onedark'
+" }}}
+
+Plug 'joshdick/onedark.vim'
+" {{{
+  "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+  "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+  "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+"}}}
 
 Plug 'kshenoy/vim-signature'
 " {{{
@@ -70,8 +116,41 @@ Plug 'kshenoy/vim-signature'
     \ }
 " }}}
 
-Plug 'janko-m/vim-test'
+Plug 'airblade/vim-gitgutter'
 " {{{
+  let g:gitgutter_map_keys = 0
+  let g:gitgutter_max_signs = 200
+  let g:gitgutter_realtime = 1
+  let g:gitgutter_eager = 1
+  let g:gitgutter_sign_removed = '–'
+  let g:gitgutter_diff_args = '--ignore-space-at-eol'
+  nmap <silent> ]h :GitGutterNextHunk<CR>
+  nmap <silent> [h :GitGutterPrevHunk<CR>
+  nnoremap <silent> <Leader>gu :GitGutterUndoHunk<CR>
+  nnoremap <silent> <Leader>gp :GitGutterPreviewHunk<CR><c-w>j
+  nnoremap cog :GitGutterToggle<CR>
+  nnoremap <Leader>gt :GitGutterAll<CR>
+" }}}
+
+" }}}
+
+" {{{ Auto Complete
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     ## I Believe i don't need this anymore as i use tabnine
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/echodoc.vim'
+Plug 'zxqfl/tabnine-vim'
+" }}}
+
+" {{{ Integrations
+Plug 'jreybert/vimagit'
+Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-dispatch'
+
+Plug 'janko-m/vim-test'
+" {{{ Vim-Test configs
   function! TerminalSplitStrategy(cmd) abort
     tabnew | call termopen(a:cmd) | startinsert
   endfunction
@@ -105,6 +184,7 @@ Plug 'tpope/vim-fugitive'
   nnoremap <silent> <leader>gW :Gwrite!<CR>
   nnoremap <silent> <leader>gq :Gwq<CR>
   nnoremap <silent> <leader>gQ :Gwq!<CR>
+  nnoremap <silent> <leader>gB :!hub browse<CR>
 
   function! ReviewLastCommit()
     if exists('b:git_dir')
@@ -122,24 +202,16 @@ Plug 'tpope/vim-fugitive'
     autocmd BufReadPost fugitive://* setlocal bufhidden=delete
   augroup END
 " }}}
-
-Plug 'airblade/vim-gitgutter'
-" {{{
-  let g:gitgutter_map_keys = 0
-  let g:gitgutter_max_signs = 200
-  let g:gitgutter_realtime = 1
-  let g:gitgutter_eager = 1
-  let g:gitgutter_sign_removed = '–'
-  let g:gitgutter_diff_args = '--ignore-space-at-eol'
-  nmap <silent> ]h :GitGutterNextHunk<CR>
-  nmap <silent> [h :GitGutterPrevHunk<CR>
-  nnoremap <silent> <Leader>gu :GitGutterUndoHunk<CR>
-  nnoremap <silent> <Leader>gp :GitGutterPreviewHunk<CR><c-w>j
-  nnoremap cog :GitGutterToggle<CR>
-  nnoremap <Leader>gt :GitGutterAll<CR>
 " }}}
 
-Plug 'tpope/vim-obsession'
+" {{{ Utilities
+Plug 'tpope/vim-repeat'  " Add '.' repeat capacities for plugins mappings
+Plug 'airblade/vim-rooter' " Move to root of the .git folder
+Plug 'tpope/vim-obsession' " Saves current session of vim
+" }}}
+
+" TODO: Continue the folding configuration here to keep file clean
+
 call plug#end()
 
 set title
@@ -154,6 +226,9 @@ set laststatus=0
 set noshowcmd
 set cursorline
 
+colorscheme onedark
+
+
 " Some basics:
   nnoremap c "_c
   set nocompatible
@@ -162,6 +237,7 @@ set cursorline
   set encoding=utf-8
   set number relativenumber
   set foldmethod=marker
+
 
 " Tab config
 
@@ -355,11 +431,19 @@ endfunction
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
+<<<<<<< HEAD
 " Airline configurations
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline_theme='minimalist'
 >>>>>>> fcc145d (Added stuff for vim)
 
+||||||| parent of 96a96c8 (added Ansible configuration)
+" Airline configurations
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline_theme='minimalist'
+
+=======
+>>>>>>> 96a96c8 (added Ansible configuration)
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j

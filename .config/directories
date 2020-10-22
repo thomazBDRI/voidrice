@@ -4,42 +4,64 @@
 h	~/
 D	~/Downloads
 b   ~/books
-m	~/musics
+m	~/cloud/musics
 pr ~/programs
-vv	~/videos
+vv	~/cloud/videos
 cf	~/.config
 mn	/mnt
 dot ~/dotfiles
 
 # {{{ Images
-im	~/images
-imsc ~/images/screenshots
-imwa ~/images/wallpapers
-imwaa ~/images/wallpapers/anime
+  im	~/cloud/images
+  imsc ~/cloud/images/screenshots
+  imwa ~/cloud/images/wallpapers
+  imwaa ~/cloud/images/wallpapers/anime
+  imwal ~/cloud/images/wallpapers/landscape
+  imwau ~/cloud/images/wallpapers/universe
 #}}}
 
 # {{{ Games
-dg  ~/games
-dgn ~/games/native
-dgs ~/games/steam
-dgn ~/games/n64
+  dg  ~/games
+  dgna ~/games/native
+  dgst ~/games/steam
+  dgn6 ~/games/n64
 # }}}
 
 # Scripts
 lb ~/.local/bin
 
+# Environments
+# {{{
 
-# Enviroments and repos
-jus	~/envs/jus
-jsco ~/envs/jus/repos/scooby
+  # jus
+  # {{{
+    ej	~/envs/jus
+    ejsc ~/envs/jus/repos/scooby_new
+    ejfi ~/envs/jus/repos/finder
+    ejex ~/envs/jus/repos/extractor
+    ejexs ~/envs/jus/repos/extractor/search
+    ejui ~/envs/jus/repos/ui-topbar
+    ejcy ~/envs/jus/repos/cyclops
+    ejfo ~/envs/jus/repos/folios
+  # }}}
 
-zoni ~/envs/zoni
-zap ~/envs/zoni/repos/api
-zaa ~/envs/zoni/repos/admin
-zad ~/envs/zoni/repos/database
+  # Zoni
+  # {{{
+    ez ~/envs/zoni
+    ezan ~/envs/zoni/repos/android
+    ezap ~/envs/zoni/repos/api
+    ezad ~/envs/zoni/repos/admin
+    ezda ~/envs/zoni/repos/database
+    ezin ~/envs/zoni/repos/infra
+    ezpa ~/envs/zoni/repos/parse-server
+    ezmo ~/envs/zoni/repos/mongodb
+    ezngi ~/envs/zoni/repos/nginx
+    ezra ~/envs/zoni/repos/rabbitmq
+  # }}}
 
+# }}}
 
-# Programs and Repos
+# Programs
 ddwm ~/programs/dwm
 ddwmbl ~/programs/dwmblocks
 dst ~/programs/st

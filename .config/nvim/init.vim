@@ -151,12 +151,16 @@ Plug 'tpope/vim-dispatch'
 
 Plug 'janko-m/vim-test'
 " {{{ Vim-Test configs
+  " Languages tests
+  let test#python#runner = 'pytest'
+
   function! TerminalSplitStrategy(cmd) abort
     tabnew | call termopen(a:cmd) | startinsert
   endfunction
   let g:test#custom_strategies = get(g:, 'test#custom_strategies', {})
   let g:test#custom_strategies.terminal_split = function('TerminalSplitStrategy')
-  let test#strategy = 'terminal_split'
+  "let test#strategy = 'terminal_split'
+  let test#strategy = 'dispatch'
 
   nnoremap <silent> <leader>rr :TestFile<CR>
   nnoremap <silent> <leader>rf :TestNearest<CR>
@@ -206,8 +210,15 @@ Plug 'tpope/vim-fugitive'
 
 " {{{ Utilities
 Plug 'tpope/vim-repeat'  " Add '.' repeat capacities for plugins mappings
+
 Plug 'airblade/vim-rooter' " Move to root of the .git folder
+" {{{
+  let g:rooter_manual_only = 1
+  map <leader>ch :Rooter<CR>
+" }}}
+
 Plug 'tpope/vim-obsession' " Saves current session of vim
+
 " }}}
 
 " TODO: Continue the folding configuration here to keep file clean
@@ -296,7 +307,43 @@ colorscheme onedark
 
 >>>>>>> ebc9118 (Bring some files from backup to new module)
 " Execute the run.sh file inside the repository
-  map <leader>c :w! \| !./run.sh %<CR>
+" map <leader>c :w! \| !./run.sh %<CR>
+
+" Terminal inside vim
+" {{{
+  tnoremap <C-h> <C-\><C-N><C-w>h
+  tnoremap <C-j> <C-\><C-N><C-w>j
+  tnoremap <C-k> <C-\><C-N><C-w>k
+  tnoremap <C-l> <C-\><C-N><C-w>l
+  inoremap <C-h> <C-\><C-N><C-w>h
+  inoremap <C-j> <C-\><C-N><C-w>j
+  inoremap <C-k> <C-\><C-N><C-w>k
+  inoremap <C-l> <C-\><C-N><C-w>l
+
+  " Open terminal below
+  map <leader>t :w! \| split \| terminal <CR>
+
+" Exit terminal window in human way Ctrl + N
+  tnoremap <C-t> <C-\><C-n>:q<CR>
+" }}}
+
+" Zoom panel function
+" {{{
+  nnoremap <leader><leader>z :call ZoomToggle()<cr>
+
+  let g:is_zoomed = 0
+
+  function! ZoomToggle()
+    if g:is_zoomed
+      :normal =
+      let g:is_zoomed = 0
+    else
+      :normal |
+      :normal _
+      let g:is_zoomed = 1
+    endif
+  endfunction
+" }}}
 
 " Jsx config
   let g:jsx_improve_motion_disable = 0
@@ -367,7 +414,8 @@ let g:LanguageClient_serverCommands = {
     \ 'sh': ['/usr/bin/bash-language-server', 'start' ],
     \ 'dockerfile': ['/usr/bin/docker-langserver', '--stdio' ],
     \ 'typescript': ['/usr/bin/typescript-language-server', '--stdio'],
-    \ 'javascript': ['/usr//bin/typescript-language-server', '--stdio'],
+    \ 'javascript': ['/usr/bin/typescript-language-server', '--stdio'],
+    \ 'javascriptreact': ['/usr/bin/typescript-language-server', '--stdio'],
     \ 'typescript.tsx': ['/usr/bin/typescript-language-server', '--stdio'],
     \ 'javascript.jsx': ['/usr/bin/typescript-language-server', '--stdio'],
     \ 'python': ['/usr/bin/pyls'],

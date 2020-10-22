@@ -7,6 +7,9 @@ setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
+# Allow hashtag to be a comment inline
+set -k
+
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000

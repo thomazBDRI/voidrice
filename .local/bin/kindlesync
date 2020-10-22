@@ -6,7 +6,7 @@ import subprocess
 
 
 filepath = '/home/thomaz/.local/share/kindlesync/dict'
-bookspath = '/home/thomaz/books'
+bookspath = '/home/thomaz/cloud/books'
 
 def read(filepath):
     with open(filepath, 'r') as f:

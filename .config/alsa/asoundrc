@@ -1,21 +1,14 @@
-# Find and use input "Microphone" for input
-pcm.usb
-{
-    type hw
-    card Microphone
+# Use PulseAudio by default
+pcm.!default {
+  type pulse
+  fallback "sysdefault"
+  hint {
+    show on
+    description "Default ALSA Output (currently PulseAudio Sound Server)"
+  }
 }
-pcm.!default
-{
-    type asym
-    playback.pcm
-    {
-    	# Use the dmix plug to allow multiple outputs.
-        type plug
-        slave.pcm "dmix"
-    }
-    capture.pcm
-    {
-        type plug
-        slave.pcm "usb"
-    }
+
+ctl.!default {
+  type pulse
+  fallback "sysdefault"
 }

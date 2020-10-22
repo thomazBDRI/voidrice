@@ -6,6 +6,9 @@ PS1="%{$fg[magenta]%}%~ %{$reset_color%}$%b "
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
+# Allow hashtag to be a comment inline
+set -k
+
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000

@@ -8,11 +8,18 @@
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
+# Get default LARBS WM from ~/.local/share/larbs/wm
+export LARBSWM="$(cat ~/.local/share/larbs/wm 2>/dev/null)" &&
+    [ "$LARBSWM" = "dwm" ] || export LARBSWM="i3"
+
+export ENVSPATCH="${HOME}/envs"
+
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="firefox"
 export READER="zathura"
+export FILE="lf"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -25,7 +32,7 @@ export LESSHISTFILE="-"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
+#export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
 #export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
@@ -35,6 +42,9 @@ export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
+export TASKRC="${XDG_CONFIG_HOME:-$HOME/.config}/task/.taskrc"
+export TASKDATA="${XDG_DATA_HOME:-$HOME/.local/share}/task"
+export TIMEWARRIORDB="$TASKDATA/timewarrior"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -53,6 +63,7 @@ export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export _JAVA_AWT_WM_NONREPARENTING=1	# Java doesn't understand tiling windows
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
+export DOTNET_CLI_TELEMETRY_OPTOUT=1 # microsoft is trully a pain in the a$$, disabling python language server spy
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\

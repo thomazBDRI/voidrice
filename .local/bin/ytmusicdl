@@ -10,7 +10,7 @@ fi
 ! echo "$choice" | grep "https://.*youtu.*" >/dev/null &&
 	notify-send "That doesn't look like a full URL." && exit
 
-cd ~/musics/Downloaded/
+cd ~/cloud/musics/Downloaded/
 
 youtube-dl --add-metadata -ix --audio-format "best" "$choice"
 

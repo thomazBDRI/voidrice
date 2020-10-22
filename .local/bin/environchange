@@ -1,6 +1,8 @@
 #!/bin/zsh
 
-choice=$(ls -1 $ENVSPATH | dmenu)
+ENVSPATH=${HOME}/envs
+
+choice=$(ls -1 ${ENVSPATH} | dmenu)
 
 [ -z $choice ] && exit 1;
 

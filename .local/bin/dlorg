@@ -6,4 +6,4 @@ cd ~/Downloads/
 ls *.part || mv *.mobi ~/books
 
 # Image files
-ls *.part || mv *.jpg *.png *.jpeg ~/images/download/
+ls *.part || mv *.jpg *.png *.jpeg ~/cloud/images/download/

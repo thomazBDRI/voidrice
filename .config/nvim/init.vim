@@ -125,9 +125,12 @@ Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
 " {{{
   let wiki_1 = {}
-  let wiki_1.path = '~/wiki'
-  let wiki_1.path_html = '~/wiki'
+  let wiki_1.path = $VIMWIKI
+  let wiki_1.path_html = $VIMWIKI_HTML
+  let wiki_1.template_path = $VIMWIKI_TEMPLATE
   let g:vimwiki_list = [wiki_1]
+
+  let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " }}}
 
 Plug 'tpope/vim-dispatch'
@@ -464,14 +467,6 @@ endfunction
 
 " Open corresponding .pdf/.html or preview
 	map <leader>p :!opout <c-r>%<CR><CR>
-
-" Ensure files are read as what I want:
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	map <leader>v :VimwikiIndex
-	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-	autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

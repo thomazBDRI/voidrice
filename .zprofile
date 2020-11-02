@@ -45,6 +45,9 @@ export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
 export TASKRC="${XDG_CONFIG_HOME:-$HOME/.config}/task/.taskrc"
 export TASKDATA="${XDG_DATA_HOME:-$HOME/.local/share}/task"
 export TIMEWARRIORDB="$TASKDATA/timewarrior"
+export VIMWIKI="${XDG_DATA_HOME:-$HOME/.local/share}/wiki"
+export VIMWIKI_HTML="${VIMWIKI}/export"
+export VIMWIKI_TEMPLATE="${VIMWIKI}/templates"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"

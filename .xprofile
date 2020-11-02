@@ -89,3 +89,4 @@ ex=🎯:\
 *.torrent=🔽:\
 "
 
+notify-send -i /home/thomaz/.local/share/larbs/larbs.png "Welcome to LARBS" "Press super+F1 for the help menu." # LARBSWELCOME

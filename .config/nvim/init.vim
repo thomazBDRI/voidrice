@@ -146,7 +146,15 @@ Plug 'zxqfl/tabnine-vim'
 
 " {{{ Integrations
 Plug 'jreybert/vimagit'
+
 Plug 'vimwiki/vimwiki'
+" {{{
+  let wiki_1 = {}
+  let wiki_1.path = '~/wiki'
+  let wiki_1.path_html = '~/wiki'
+  let g:vimwiki_list = [wiki_1]
+" }}}
+
 Plug 'tpope/vim-dispatch'
 
 Plug 'janko-m/vim-test'
@@ -311,14 +319,14 @@ colorscheme onedark
 
 " Terminal inside vim
 " {{{
-  tnoremap <C-h> <C-\><C-N><C-w>h
-  tnoremap <C-j> <C-\><C-N><C-w>j
-  tnoremap <C-k> <C-\><C-N><C-w>k
-  tnoremap <C-l> <C-\><C-N><C-w>l
-  inoremap <C-h> <C-\><C-N><C-w>h
-  inoremap <C-j> <C-\><C-N><C-w>j
-  inoremap <C-k> <C-\><C-N><C-w>k
-  inoremap <C-l> <C-\><C-N><C-w>l
+  tnoremap <C-w><C-h> <C-\><C-N><C-w>h
+  tnoremap <C-w><C-j> <C-\><C-N><C-w>j
+  tnoremap <C-w><C-k> <C-\><C-N><C-w>k
+  tnoremap <C-w><C-l> <C-\><C-N><C-w>l
+  inoremap <C-w><C-h> <C-\><C-N><C-w>h
+  inoremap <C-w><C-j> <C-\><C-N><C-w>j
+  inoremap <C-w><C-k> <C-\><C-N><C-w>k
+  inoremap <C-w><C-l> <C-\><C-N><C-w>l
 
   " Open terminal below
   map <leader>t :w! \| split \| terminal <CR>
@@ -408,7 +416,7 @@ let g:UltiSnipsJumpBackwardTrigger="<LEFT>"
 
 " LSP Configs
 let g:LanguageClient_serverCommands = {
-    \ 'java': ['/home/thomaz/.local/bin/jdtls', '-data', getcwd()],
+    \ 'java': ['/usr/bin/jdtls', '-data', getcwd()],
     \ 'bash': ['/usr/bin/bash-language-server', 'start' ],
     \ 'zsh': ['/usr/bin/bash-language-server', 'start' ],
     \ 'sh': ['/usr/bin/bash-language-server', 'start' ],
@@ -480,6 +488,7 @@ endfunction
 	set splitbelow splitright
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 " Airline configurations
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline_theme='minimalist'
@@ -497,6 +506,20 @@ endfunction
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
+||||||| parent of 98e52fa (Added tasksync)
+" Shortcutting split navigation, saving a keypress:
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
+=======
+" I like to use C-w :D
+" " Shortcutting split navigation, saving a keypress:
+" 	map <C-h> <C-w>h
+" 	map <C-j> <C-w>j
+" 	map <C-k> <C-w>k
+" 	map <C-l> <C-w>l
+>>>>>>> 98e52fa (Added tasksync)
 
 " Replace ex mode with gq
 	map Q gq

@@ -4,7 +4,11 @@ VERSION=$(date +'%Y%m%dT%H%M%S')
 
 cd $TASKDATA
 
+git stash
+
 git pull origin master
+
+git stash pop
 
 git add .
 

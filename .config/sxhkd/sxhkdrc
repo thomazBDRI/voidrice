@@ -116,11 +116,11 @@ super + {comma,period}
 super + shift + less
 	mpc seek 0%
 # Seek foward in song
-super + {_,shift +} bracketright
-	mpc seek +{10,120}
+#super + {_,shift +} bracketright
+#	mpc seek +{10,120}
 # Seek backward in song
-super + {_,shift +} bracketleft
-	mpc seek -{10,120}
+#super + {_,shift +} bracketleft
+#	mpc seek -{10,120}
 # Increase volume
 super + {equal,plus}
   pulsemixer --change-volume +{5,15}; pkill -RTMIN+10 dwmblocks

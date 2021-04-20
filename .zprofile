@@ -48,6 +48,8 @@ export TIMEWARRIORDB="$TASKDATA/timewarrior"
 export VIMWIKI="${XDG_DATA_HOME:-$HOME/.local/share}/wiki"
 export VIMWIKI_HTML="${VIMWIKI}/export"
 export VIMWIKI_TEMPLATE="${VIMWIKI}/templates"
+export USERBIN="$HOME/.local/bin/programs"
+export USERMAN="${XDG_DATA_HOME:-$HOME/.local/share}/man"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -67,6 +69,7 @@ export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export _JAVA_AWT_WM_NONREPARENTING=1	# Java doesn't understand tiling windows
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # microsoft is trully a pain in the a$$, disabling python language server spy
+export METALS_JAVA_OPTS='-XX:+UseG1GC -XX:+UseStringDeduplication -Xss4m -Xms100m'
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\

@@ -14,24 +14,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/thomaz/envs/zoni/repos/android/app
-	release
-2
-d/home/thomaz/envs/zoni/repos/android/app/release
-	app-release.apk
-1
-d/home/thomaz
-	books
-12
-d/home/thomaz/books
-	Beginners Illustrated Guide to Gardening Techniques to Help You Get Started by Katie Elzer-Peters (z-lib.org).mobi
-8
-d/home/thomaz/Downloads
-	..
-0
-d/tmp/mozilla_thomaz0
-	11752119746-IRPF-2019-2018-origi-imagem-recibo.pdf
-1
 d/tmp
 	mozilla_thomaz0
 7
@@ -59,6 +41,24 @@ d/home/thomaz/cloud/documents/irpf/2019
 d/home/thomaz/Downloads/irpf
 	..
 0
+d/home/thomaz/cloud/images/envs/zoni
+	arrow_back-white-18dp
+1
+d/home/thomaz/cloud/images/envs/zoni/arrow_back-white-18dp
+	1x
+1
+d/home/thomaz/cloud/images/envs/zoni/arrow_back-white-18dp/1x
+	..
+0
+d/home/thomaz/cloud/images/envs/zoni/arrow_back-white-18dp
+	2x
+2
+d/home/thomaz/cloud/images/envs/zoni/arrow_back-white-18dp/2x
+	..
+0
+d/home/thomaz/cloud/images/envs/zoni/arrow_back-white-18dp
+	1x
+1
 
 # Right window history (oldest to newest):
 D/home/thomaz

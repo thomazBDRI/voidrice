@@ -19,3 +19,13 @@ cfsxi ~/.config/sxiv/exec/key-handler
 
 # programs
 fdwmc ~/programs/dwm/dwm.c
+
+# {{{ Env files
+  # {{{ Zoni
+  ezcf ~/envs/zoni/.venv/bin/activate
+  # }}}
+
+  # {{{ Jus
+  ejcf ~/envs/jus/.venv/bin/activate
+  # }}}
+# }}}

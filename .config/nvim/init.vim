@@ -41,7 +41,6 @@ Plug 'tpope/vim-commentary'
 
 " {{{ Syntax
 Plug 'PotatoesMaster/i3-vim-syntax'
->>>>>>> 9a0de94 (added Ansible configuration)
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'sheerun/vim-polyglot'
@@ -136,13 +135,161 @@ Plug 'airblade/vim-gitgutter'
 
 " {{{ Auto Complete
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     ## I Believe i don't need this anymore as i use tabnine
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+
+" {{{ LSP Configs
+
+"   let g:LanguageClient_serverCommands = {
+"       \ 'dart': ['/usr/bin/dart', '/opt/dart-sdk/bin/snapshots/analysis_server.dart.snapshot', '--lsp', '--client-id', 'vim', '--client-version', '1.2'],
+"       \ 'java': ['/usr/bin/jdtls', '-data', getcwd()],
+"       \ 'scala': ['/usr/bin/metals-vim'],
+"       \ 'bash': ['/usr/bin/bash-language-server', 'start' ],
+"       \ 'zsh': ['/usr/bin/bash-language-server', 'start' ],
+"       \ 'sh': ['/usr/bin/bash-language-server', 'start' ],
+"       \ 'dockerfile': ['/usr/bin/docker-langserver', '--stdio' ],
+"       \ 'typescript': ['/usr/bin/typescript-language-server', '--stdio'],
+"       \ 'javascript': ['/usr/bin/typescript-language-server', '--stdio'],
+"       \ 'javascriptreact': ['/usr/bin/typescript-language-server', '--stdio'],
+"       \ 'typescript.tsx': ['/usr/bin/typescript-language-server', '--stdio'],
+"       \ 'javascript.jsx': ['/usr/bin/typescript-language-server', '--stdio'],
+"       \ 'python': ['/usr/bin/pyls'],
+"       \ 'make': ['/usr/bin/cmake-language-server'],
+"       \ 'groovy': ['/usr/bin/java', '-jar', '/usr/share/java/groovy-language-server/groovy-language-server.jar'],
+"       \ 'php': ['/usr/bin/php-language-server'],
+"       \ 'c': ['/usr/bin/ccls'],
+"       \ 'cpp': ['/usr/bin/ccls'],
+"       \ 'cuda': ['/usr/bin/ccls'],
+"       \ 'objc': ['/usr/bin/ccls'],
+"       \ 'xml': ['/usr/bin/xml-language-server'],
+"       \ 'yaml': ['/usr/bin/yaml-language-server', '--stdio'],
+"       \ }
+
+"   let g:LanguageClient_windowLogMessageLevel = 'Log'
+"   let g:LanguageClient_hoverPreview = 'Always'
+
+"   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+"   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+"   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+"   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+"   nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+"   nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+"   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+"   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+"   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+"   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+" " }}}
+
 Plug 'Shougo/echodoc.vim'
-Plug 'zxqfl/tabnine-vim'
+" {{{  echodoc configs
+  let g:echodoc_enable_at_startup = 1
 " }}}
+
+" Plug 'zxqfl/tabnine-vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" {{{ Coc configs
+
+  set updatetime=300
+  set shortmess+=c
+
+  " use <tab> for trigger completion and navigate to the next complete item
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+
+  inoremap <silent><expr> <Tab>
+        \ pumvisible() ? "\<C-n>" :
+        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+  let g:coc_snippet_next = '<tab>'
+  xmap <leader>x  <Plug>(coc-convert-snippet)
+
+  " Use `[g` and `]g` to navigate diagnostics
+  " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+  " GoTo code navigation.
+  nmap <silent> <leader>ld <Plug>(coc-definition)
+  nmap <silent> <leader>ly <Plug>(coc-type-definition)
+  nmap <silent> <leader>li <Plug>(coc-implementation)
+  nmap <silent> <leader>le <Plug>(coc-references)
+  nmap <leader>lr <Plug>(coc-rename)
+
+  " Formatting selected code.
+  xmap <leader>lf  <Plug>(coc-format-selected)
+  nmap <leader>lf  <Plug>(coc-format-selected)
+
+  " Applying codeAction to the selected region.
+  " Example: `<leader>aap` for current paragraph
+  xmap <leader>la  <Plug>(coc-codeaction-selected)
+  nmap <leader>la  <Plug>(coc-codeaction-selected)
+
+  " Remap keys for applying codeAction to the current buffer.
+  nmap <leader>lac  <Plug>(coc-codeaction)
+  " Apply AutoFix to problem on the current line.
+  nmap <leader>lqf  <Plug>(coc-fix-current)
+
+  " Show commands.
+  nnoremap <silent><nowait> <leader>lc  :<C-u>CocList commands<cr>
+  " Find symbol of current document.
+  nnoremap <silent><nowait> <leader>lo  :<C-u>CocList outline<cr>
+  " Search workspace symbols.
+  nnoremap <silent><nowait> <leader>ls  :<C-u>CocList -I symbols<cr>
+
+  augroup cocgroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json,dart,python setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  augroup end
+
+  " Use K to show documentation in preview window.
+  nnoremap <silent> <leader>lK :call <SID>show_documentation()<CR>
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
+    else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+  endfunction
+
+  " Remap <C-f> and <C-b> for scroll float windows/popups.
+  if has('nvim-0.4.0') || has('patch-8.2.0750')
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  endif
+
+  " Add `:Fold` command to fold current buffer.
+  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+  " Add `:OR` command for organize imports of the current buffer.
+  command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+
+" }}}
+" }}}
+
+" {{{ Snippets
+Plug 'honza/vim-snippets'
+"}}}
 
 " {{{ Integrations
 Plug 'jreybert/vimagit'
@@ -191,6 +338,7 @@ Plug 'tpope/vim-fugitive'
   nnoremap <silent> <leader>gl :Gllog<CR>
   nnoremap <silent> <leader>gc :Gcommit<CR>
   nnoremap <silent> <leader>gb :Gblame<CR>
+  nnoremap <silent> <leader>gp :Gpush<CR>
   nnoremap <silent> <leader>ge :Gedit<CR>
   nnoremap <silent> <leader>gE :Gedit<space>
   nnoremap <silent> <leader>gr :Gread<CR>
@@ -230,8 +378,28 @@ Plug 'airblade/vim-rooter' " Move to root of the .git folder
 
 Plug 'tpope/vim-obsession' " Saves current session of vim
 
+" Nerdtree icons
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'preservim/nerdtree'
+" {{{ Nerdtree configurations
+  nnoremap <leader>n :NERDTreeFocus<CR>
+  nnoremap <F3> :NERDTreeToggle<CR>
+  nnoremap <C-f> :NERDTreeFind<CR>
+"}}}
+
 " }}}
 
+" {{{ Augroups
+
+  " {{{ Dart
+  augroup filetype_dart
+    autocmd!
+    autocmd FileType dart nnoremap <buffer> <F5> :!kill -SIGUSR1 "$(pgrep -f flutter_tools.snapshot\ run)" &> /dev/null<CR>
+  augroup END
+  " }}}
+
+" }}}
 " TODO: Continue the folding configuration here to keep file clean
 
 call plug#end()
@@ -364,6 +532,10 @@ let g:fzf_nvim_statusline = 0 " disable statusline overwriting
 
   nnoremap <silent> <leader><space>lb :Files /home/thomaz/.local/bin<CR>
   nnoremap <silent> <leader><space>cf :Files /home/thomaz/.config<CR>
+  nnoremap <silent> <leader><space>ez :Files /home/thomaz/envs/zoni<CR>
+  nnoremap <silent> <leader><space>ezr :Files /home/thomaz/envs/zoni/repos<CR>
+  nnoremap <silent> <leader><space>ezfl :Files /home/thomaz/envs/zoni/repos/em-rep-flutter<CR>
+  nnoremap <silent> <leader><space>ezfle :Files /home/thomaz/envs/zoni/repos/getx_pattern<CR>
   nnoremap <silent> <leader><space>h :Files /home/thomaz<CR>
   nnoremap <silent> <leader><space>. :Files<CR>
   nnoremap <silent> <leader>a :Buffers<CR>
@@ -416,41 +588,6 @@ noremap <F10> :lw<CR>
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<RIGHT>"
 let g:UltiSnipsJumpBackwardTrigger="<LEFT>"
-
-" LSP Configs
-let g:LanguageClient_serverCommands = {
-    \ 'java': ['/usr/bin/jdtls', '-data', getcwd()],
-    \ 'bash': ['/usr/bin/bash-language-server', 'start' ],
-    \ 'zsh': ['/usr/bin/bash-language-server', 'start' ],
-    \ 'sh': ['/usr/bin/bash-language-server', 'start' ],
-    \ 'dockerfile': ['/usr/bin/docker-langserver', '--stdio' ],
-    \ 'typescript': ['/usr/bin/typescript-language-server', '--stdio'],
-    \ 'javascript': ['/usr/bin/typescript-language-server', '--stdio'],
-    \ 'javascriptreact': ['/usr/bin/typescript-language-server', '--stdio'],
-    \ 'typescript.tsx': ['/usr/bin/typescript-language-server', '--stdio'],
-    \ 'javascript.jsx': ['/usr/bin/typescript-language-server', '--stdio'],
-    \ 'python': ['/usr/bin/pyls'],
-    \ 'make': ['/usr/bin/cmake-language-server'],
-    \ 'groovy': ['/usr/bin/java', '-jar', '/usr/share/java/groovy-language-server/groovy-language-server.jar'],
-    \ 'php': ['/usr/bin/php-language-server'],
-    \ 'c': ['/usr/bin/ccls'],
-    \ 'cpp': ['/usr/bin/ccls'],
-    \ 'cuda': ['/usr/bin/ccls'],
-    \ 'objc': ['/usr/bin/ccls'],
-    \ 'xml': ['/usr/bin/xml-language-server'],
-    \ 'yaml': ['/usr/bin/yaml-language-server', '--stdio'],
-    \ }
-
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
 " Always draw the signcolumn.
 set signcolumn=yes
@@ -540,6 +677,7 @@ endfunction
 	map <leader>p :!opout "%:p"<CR>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 " Ensure files are read as what I want:
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	map <leader>v :VimwikiIndex<CR>
@@ -559,12 +697,14 @@ endfunction
 
 =======
 >>>>>>> 9807dd1 (Added vimwiki configs)
+||||||| parent of 9c1f369 (Added coc.nvim)
+=======
+" Replace all is aliased to S.
+	nnoremap S :%s//g<Left><Left>
+
+>>>>>>> 9c1f369 (Added coc.nvim)
 " Save file as sudo on files that require root permission
 	cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" Tags config
-	set tags=./.tags;
-	map <leader>ut :!ctags -R --exclude=@/home/thomaz/.config/nvim/ctagsignore .<CR><CR>
 
 " Toggle Auto indent
 	set pastetoggle=<F2>
@@ -632,10 +772,6 @@ endfunction
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-
-" When suckless files are update, install then
-" FIXME: Removing because it was trigeering on list.py file
-" autocmd BufWritePost *dwmc,*dwm.*,*dmenu.*,*st.* !make install clean
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff

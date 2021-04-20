@@ -57,6 +57,7 @@ lb ~/.local/bin
     ezmo ~/envs/zoni/repos/mongodb
     ezngi ~/envs/zoni/repos/nginx
     ezra ~/envs/zoni/repos/rabbitmq
+    ezfl ~/envs/zoni/repos/em-rep-flutter
   # }}}
 
 # }}}

@@ -161,7 +161,7 @@ fo() (
 # Declare function to open files from directories in `.config/directories`
 # with fzf, the name for each function is fz`shortcut`
 
-directories=$(sed "s/\s*#.*$//;/^\s*$/d;s/\t/ /;s/  \+/ /" "$HOME/.config/directories")
+directories=$(sed "s/\s*#.*$//;/^\s*$/d;s/\t/ /;s/  \+/ /" "$HOME/.config/shell/bm-dirs")
 
 while read -r line; do
   name="fz$(echo "$line" | cut -d' ' -f1)"

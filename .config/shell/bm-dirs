@@ -1,13 +1,77 @@
 # You can add comments to these files with #
-cac ${XDG_CACHE_HOME:-$HOME/.cache}
-cf  ${XDG_CONFIG_HOME:-$HOME/.config}
-D   ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
-d   ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
-dt  ${XDG_DATA_HOME:-$HOME/.local/share}
-h   $HOME
-m   ${XDG_MUSIC_DIR:-$HOME/Music}
-mn  /mnt
-pp  ${XDG_PICTURES_DIR:-$HOME/Pictures}
-sc  $HOME/.local/bin
-src $HOME/.local/src
-vv  ${XDG_VIDEOS_DIR:-$HOME/Videos}
+
+# Normal stuff
+h	~/
+D	~/Downloads
+b   ~/books
+m	~/cloud/musics
+pr ~/programs
+vv	~/cloud/videos
+cf	~/.config
+mn	/mnt
+dot ~/dotfiles
+daur ~/aur
+
+# {{{ Images
+  im	~/cloud/images
+  imsc ~/cloud/images/screenshots
+  imwa ~/cloud/images/wallpapers
+  imwaa ~/cloud/images/wallpapers/anime
+  imwal ~/cloud/images/wallpapers/landscape
+  imwau ~/cloud/images/wallpapers/universe
+#}}}
+
+# {{{ Games
+  dg  ~/games
+  dgna ~/games/native
+  dgst ~/games/steam
+  dgn6 ~/games/n64
+# }}}
+
+# Scripts
+lb ~/.local/bin
+
+# Programs
+lbs ~/.local/src
+lbd ~/.local/src/lukedwm
+lbb ~/.local/src/dwmblocks
+lbst ~/.local/src/st
+lbdm ~/.local/src/dmenu
+
+# Environments
+# {{{
+
+  # jus
+  # {{{
+    ej	~/envs/jus
+    ejsc ~/envs/jus/repos/scooby_new
+    ejfi ~/envs/jus/repos/finder
+    ejex ~/envs/jus/repos/extractor
+    ejexs ~/envs/jus/repos/extractor/search
+    ejui ~/envs/jus/repos/ui-topbar
+    ejcy ~/envs/jus/repos/cyclops
+    ejfo ~/envs/jus/repos/folios
+  # }}}
+
+  # Zoni
+  # {{{
+    ez ~/envs/zoni
+    ezan ~/envs/zoni/repos/android
+    ezap ~/envs/zoni/repos/api
+    ezad ~/envs/zoni/repos/admin
+    ezda ~/envs/zoni/repos/database
+    ezin ~/envs/zoni/repos/infra
+    ezpa ~/envs/zoni/repos/parse-server
+    ezmo ~/envs/zoni/repos/mongodb
+    ezngi ~/envs/zoni/repos/nginx
+    ezra ~/envs/zoni/repos/rabbitmq
+    ezfl ~/envs/zoni/repos/emrepemployee
+    ezfr ~/envs/zoni/repos/firebase
+  # }}}
+
+  # Games
+  # {{{
+    eg   ~/envs/games
+    egse ~/envs/games/repos/poc_geo
+  # }}}
+# }}}

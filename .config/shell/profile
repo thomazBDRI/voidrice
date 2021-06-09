@@ -6,14 +6,14 @@
 # to clean up.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+export PATH="$PATH:${$(find ~/.local/bin/ -type d -printf %p:)%%:}"
 
 unsetopt PROMPT_SP
 
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="firefox"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -42,8 +42,26 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export WEECHAT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/weechat"
 export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export ELECTRUMDIR="${XDG_DATA_HOME:-$HOME/.local/share}/electrum"
+export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
+export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
+export TASKRC="${XDG_CONFIG_HOME:-$HOME/.config}/task/.taskrc"
+export TASKDATA="${XDG_DATA_HOME:-$HOME/.local/share}/task"
+export TIMEWARRIORDB="$TASKDATA/timewarrior"
+export VIMWIKI="${XDG_DATA_HOME:-$HOME/.local/share}/wiki"
+export VIMWIKI_HTML="${VIMWIKI}/export"
+export VIMWIKI_TEMPLATE="${VIMWIKI}/templates"
+export USERBIN="$HOME/.local/bin/programs"
+export USERMAN="${XDG_DATA_HOME:-$HOME/.local/share}/man"
+
 
 # Other program settings:
+export CALWARRIOR_CREDENTIALS="${XDG_CONFIG_HOME:-$HOME/.config}/task/credentials.json"
 export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"

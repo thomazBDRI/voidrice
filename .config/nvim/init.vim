@@ -287,6 +287,9 @@ Plug 'janko-m/vim-test'
   " Languages tests
   let test#python#runner = 'pytest'
 
+  let test#go#runner = 'gotest'
+  let test#go#file_pattern = '.*'
+
   function! TerminalSplitStrategy(cmd) abort
     tabnew | call termopen(a:cmd) | startinsert
   endfunction
@@ -295,8 +298,8 @@ Plug 'janko-m/vim-test'
   "let test#strategy = 'terminal_split'
   let test#strategy = 'dispatch'
 
-  nnoremap <silent> <leader>rr :TestFile<CR>
-  nnoremap <silent> <leader>rf :TestNearest<CR>
+  nnoremap <silent> <leader>rf :TestFile<CR>
+  nnoremap <silent> <leader>rn :TestNearest<CR>
   nnoremap <silent> <leader>rs :TestSuite<CR>
   nnoremap <silent> <leader>ra :TestLast<CR>
   nnoremap <silent> <leader>ro :TestVisit<CR>
@@ -615,16 +618,18 @@ endfunction
 	set pastetoggle=<F2>
 
 " Automatically deletes all trailing whitespace on save.
-	autocmd BufWritePre * %s/\n\+\%$//e
+	" autocmd BufWritePre * %s/\n\+\%$//e
 	autocmd BufWritePre *.[ch] %s/\%$/\r/e
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost bm-files,bm-dirs !shortcuts
+
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
+
 " Recompile dwmblocks on config edit.
-	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid -f dwmblocks }
+	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; make install && { killall -q dwmblocks;setsid -f dwmblocks }
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost files,directories !shortcuts

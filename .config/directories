@@ -63,8 +63,8 @@ lb ~/.local/bin
 # }}}
 
 # Programs
-ddwm ~/programs/dwm
-ddwmbl ~/programs/dwmblocks
+ddwm ~/.local/src/dwm
+ddwmbl ~/.local/src/dwmblocks
 dst ~/programs/st
 ddmenu ~/programs/dmenu
 

@@ -16,11 +16,5 @@ password       qvewrwhuezkzcnyn
 # Set a default account
 account default : gmail
 
-account personal-gmail
-host smtp.gmail.com
-port 587
-from thomaz.andradee@gmail.com
-user thomaz.andradee@gmail.com
-passwordeval "pass mutt-wizard-personal-gmail"
 
 

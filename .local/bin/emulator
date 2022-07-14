@@ -1,0 +1,7 @@
+#!/bin/sh
+
+emulator=$(/home/thomaz/Android/Sdk/emulator/emulator -list-avds | dmenu -i -l 10)
+
+echo ${emulator}
+
+/home/thomaz/Android/Sdk/emulator/emulator -avd ${emulator}

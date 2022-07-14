@@ -19,6 +19,7 @@ call plug#begin('~/.config/nvim/plugged')
 " {{{ Quick Edits
 >>>>>>> 96a96c8 (added Ansible configuration)
 Plug 'tpope/vim-surround'
+<<<<<<< HEAD
 Plug 'junegunn/goyo.vim'
 <<<<<<< HEAD
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -36,13 +37,14 @@ Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
 =======
 >>>>>>> 96a96c8 (added Ansible configuration)
+||||||| parent of 4f31f60 (Added and update stuff)
+Plug 'junegunn/goyo.vim'
+=======
+>>>>>>> 4f31f60 (Added and update stuff)
 Plug 'tpope/vim-commentary'
 " }}}
 
 " {{{ Syntax
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'kovetskiy/sxhkd-vim'
-Plug 'chemzqm/vim-jsx-improve'
 Plug 'sheerun/vim-polyglot'
 " }}}
 
@@ -50,6 +52,44 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+" {{{ FZF Configs
+  let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+
+  nnoremap <silent> <leader><space>lb :Files /home/thomaz/.local/bin<CR>
+  nnoremap <silent> <leader><space>cf :Files /home/thomaz/.config<CR>
+  nnoremap <silent> <leader><space>ez :Files /home/thomaz/envs/zoni<CR>
+  nnoremap <silent> <leader><space>ezr :Files /home/thomaz/envs/zoni/repos<CR>
+  nnoremap <silent> <leader><space>ezfl :Files /home/thomaz/envs/zoni/repos/em-rep-flutter<CR>
+  nnoremap <silent> <leader><space>. :Files<CR>
+  nnoremap <silent> <leader>a :Buffers<CR>
+  nnoremap <silent> <leader>A :Windows<CR>
+  nnoremap <silent> <leader>; :BLines<CR>
+  nnoremap <silent> <leader>. :Lines<CR>
+  nnoremap <silent> <leader>? :History<CR>
+  nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+
+  nnoremap <silent> K :call SearchWordWithAg()<CR>
+  vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
+
+  imap <C-x><C-f> <plug>(fzf-complete-file-ag)
+  imap <C-x><C-l> <plug>(fzf-complete-line)
+
+  function! SearchWordWithAg()
+    execute 'Ag' expand('<cword>')
+  endfunction
+
+  function! SearchVisualSelectionWithAg() range
+    let old_reg = getreg('"')
+    let old_regtype = getregtype('"')
+    let old_clipboard = &clipboard
+    set clipboard&
+    normal! ""gvy
+    let selection = getreg('"')
+    call setreg('"', old_reg, old_regtype)
+    let &clipboard = old_clipboard
+    execute 'Ag' selection
+  endfunction
+
 
 Plug 'unblevable/quick-scope'
 " {{{
@@ -59,9 +99,10 @@ Plug 'unblevable/quick-scope'
 "}}}
 
 " }}}
+" }}}
 
 " {{{ Visual
-Plug 'ap/vim-css-color' " Try adding hex colors
+Plug 'chrisbra/Colorizer'
 Plug 'vim-airline/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
@@ -182,9 +223,9 @@ Plug 'airblade/vim-gitgutter'
 "   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 " " }}}
 
-Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/echodoc.vim'
 " {{{  echodoc configs
-  let g:echodoc_enable_at_startup = 1
+  " let g:echodoc_enable_at_startup = 1
 " }}}
 
 " Plug 'zxqfl/tabnine-vim'
@@ -211,7 +252,18 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
   let g:coc_snippet_next = '<tab>'
-  xmap <leader>x  <Plug>(coc-convert-snippet)
+
+  " Use <C-j> for jump to next placeholder, it's default of coc.nvim
+  let g:coc_snippet_next = '<c-j>'
+
+  " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+  let g:coc_snippet_prev = '<c-k>'
+
+  " Use <C-j> for both expand and jump (make expand higher priority.)
+  imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " Use `[g` and `]g` to navigate diagnostics
   " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -226,8 +278,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <leader>lr <Plug>(coc-rename)
 
   " Formatting selected code.
-  xmap <leader>lf  <Plug>(coc-format-selected)
-  nmap <leader>lf  <Plug>(coc-format-selected)
+  " xmap <leader>lf  <Plug>(coc-format-selected)
+  " nmap <leader>lf  <Plug>(coc-format-selected)
 
   " Applying codeAction to the selected region.
   " Example: `<leader>aap` for current paragraph
@@ -239,6 +291,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " Apply AutoFix to problem on the current line.
   nmap <leader>lqf  <Plug>(coc-fix-current)
 
+  " Show all diagnostics.
+  nnoremap <silent><nowait> <space>lf  :<C-u>CocList diagnostics<cr>
   " Show commands.
   nnoremap <silent><nowait> <leader>lc  :<C-u>CocList commands<cr>
   " Find symbol of current document.
@@ -268,14 +322,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endfunction
 
   " Remap <C-f> and <C-b> for scroll float windows/popups.
-  if has('nvim-0.4.0') || has('patch-8.2.0750')
-    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  endif
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
   " Add `:Fold` command to fold current buffer.
   command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -287,12 +339,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " }}}
 " }}}
 
-" {{{ Snippets
-Plug 'honza/vim-snippets'
-"}}}
-
 " {{{ Integrations
-Plug 'jreybert/vimagit'
+" Plug 'jreybert/vimagit'
 
 Plug 'vimwiki/vimwiki'
 " {{{
@@ -320,8 +368,7 @@ Plug 'janko-m/vim-test'
   endfunction
   let g:test#custom_strategies = get(g:, 'test#custom_strategies', {})
   let g:test#custom_strategies.terminal_split = function('TerminalSplitStrategy')
-  "let test#strategy = 'terminal_split'
-  let test#strategy = 'dispatch'
+  let test#strategy = 'neovim'
 
   nnoremap <silent> <leader>rf :TestFile<CR>
   nnoremap <silent> <leader>rn :TestNearest<CR>
@@ -336,21 +383,18 @@ Plug 'tpope/vim-fugitive'
   " (https://github.com/tpope/vim-git/issues/12)
   let g:fugitive_git_executable = 'LANG=en_US.UTF-8 git'
 
-  nnoremap <silent> <leader>gs :Gstatus<CR>
-  nnoremap <silent> <leader>gd :Gdiff<CR>
-  nnoremap <silent> <leader>gl :Gllog<CR>
-  nnoremap <silent> <leader>gc :Gcommit<CR>
-  nnoremap <silent> <leader>gb :Gblame<CR>
-  nnoremap <silent> <leader>gp :Gpush<CR>
-  nnoremap <silent> <leader>ge :Gedit<CR>
-  nnoremap <silent> <leader>gE :Gedit<space>
-  nnoremap <silent> <leader>gr :Gread<CR>
-  nnoremap <silent> <leader>gR :Gread<space>
-  nnoremap <silent> <leader>gw :Gwrite<CR>
-  nnoremap <silent> <leader>gW :Gwrite!<CR>
+  nnoremap <silent> <leader>gs :Git<CR>
+  nnoremap <silent> <leader>gd :Git diff<CR>
+  nnoremap <silent> <leader>gl :Git log<CR>
+  nnoremap <silent> <leader>gc :Git commit<CR>
+  nnoremap <silent> <leader>gb :Git blame<CR>
+  nnoremap <silent> <leader>gp :Git push<CR>
+  nnoremap <silent> <leader>ge :Git edit<CR>
+  nnoremap <silent> <leader>gr :Git read<CR>
+  nnoremap <silent> <leader>gw :Git write<CR>
   nnoremap <silent> <leader>gq :Gwq<CR>
   nnoremap <silent> <leader>gQ :Gwq!<CR>
-  nnoremap <silent> <leader>gB :!hub browse<CR>
+  nnoremap <silent> <leader>gB :GBrowse<CR>
 
   function! ReviewLastCommit()
     if exists('b:git_dir')
@@ -379,30 +423,32 @@ Plug 'airblade/vim-rooter' " Move to root of the .git folder
   map <leader>ch :Rooter<CR>
 " }}}
 
-Plug 'tpope/vim-obsession' " Saves current session of vim
+" Plug 'tpope/vim-obsession' " Saves current session of vim
 
 " Nerdtree icons
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'preservim/nerdtree'
 " {{{ Nerdtree configurations
-  nnoremap <leader>n :NERDTreeFocus<CR>
-  nnoremap <F3> :NERDTreeToggle<CR>
-  nnoremap <C-f> :NERDTreeFind<CR>
+	map <leader>n :NERDTreeToggle<CR>
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    if has('nvim')
+        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
+    else
+        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
+    endif
 "}}}
 
 " }}}
+"
+" " {{{ Snippets
+Plug 'honza/vim-snippets' " Dude don't remove it as coc-snippets need this to have snippets
+"}}}
 
-" {{{ Augroups
-
-  " {{{ Dart
-  augroup filetype_dart
-    autocmd!
-    autocmd FileType dart nnoremap <buffer> <F5> :!kill -SIGUSR1 "$(pgrep -f flutter_tools.snapshot\ run)" &> /dev/null<CR>
-  augroup END
-  " }}}
-
+" {{{ Custom Plugins
+Plug '~/repos/stream/vim-twitch-bot'
 " }}}
+
 " TODO: Continue the folding configuration here to keep file clean
 
 call plug#end()
@@ -439,24 +485,22 @@ colorscheme onedark
   set shiftwidth=2
   set autoindent
 
-" Enable autocompletion:
-"  set wildmode=longest,list,full
-
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Perform dot commands over visual blocks:
-	vnoremap . :normal .<CR>
+	" vnoremap . :normal .<CR>
 
 " Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+	" map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+	" map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
+<<<<<<< HEAD
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -484,30 +528,24 @@ colorscheme onedark
 =======
 ||||||| parent of ebc9118 (Bring some files from backup to new module)
 =======
+||||||| parent of 4f31f60 (Added and update stuff)
+" Nerd tree
+	map <leader>n :NERDTreeToggle<CR>
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    if has('nvim')
+        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
+    else
+        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
+    endif
+
+=======
+>>>>>>> 4f31f60 (Added and update stuff)
 " Signify configurations
   set updatetime=100
 
 >>>>>>> ebc9118 (Bring some files from backup to new module)
 " Execute the run.sh file inside the repository
 " map <leader>c :w! \| !./run.sh %<CR>
-
-" Terminal inside vim
-" {{{
-  tnoremap <C-w><C-h> <C-\><C-N><C-w>h
-  tnoremap <C-w><C-j> <C-\><C-N><C-w>j
-  tnoremap <C-w><C-k> <C-\><C-N><C-w>k
-  tnoremap <C-w><C-l> <C-\><C-N><C-w>l
-  inoremap <C-w><C-h> <C-\><C-N><C-w>h
-  inoremap <C-w><C-j> <C-\><C-N><C-w>j
-  inoremap <C-w><C-k> <C-\><C-N><C-w>k
-  inoremap <C-w><C-l> <C-\><C-N><C-w>l
-
-  " Open terminal below
-  map <leader>t :w! \| split \| terminal <CR>
-
-" Exit terminal window in human way Ctrl + N
-  tnoremap <C-t> <C-\><C-n>:q<CR>
-" }}}
 
 " Zoom panel function
 " {{{
@@ -527,70 +565,10 @@ colorscheme onedark
   endfunction
 " }}}
 
-" Jsx config
-  let g:jsx_improve_motion_disable = 0
-
-" FZF configuration
-let g:fzf_nvim_statusline = 0 " disable statusline overwriting
-
-  nnoremap <silent> <leader><space>lb :Files /home/thomaz/.local/bin<CR>
-  nnoremap <silent> <leader><space>cf :Files /home/thomaz/.config<CR>
-  nnoremap <silent> <leader><space>ez :Files /home/thomaz/envs/zoni<CR>
-  nnoremap <silent> <leader><space>ezr :Files /home/thomaz/envs/zoni/repos<CR>
-  nnoremap <silent> <leader><space>ezfl :Files /home/thomaz/envs/zoni/repos/em-rep-flutter<CR>
-  nnoremap <silent> <leader><space>ezfle :Files /home/thomaz/envs/zoni/repos/getx_pattern<CR>
-  nnoremap <silent> <leader><space>h :Files /home/thomaz<CR>
-  nnoremap <silent> <leader><space>. :Files<CR>
-  nnoremap <silent> <leader>a :Buffers<CR>
-  nnoremap <silent> <leader>A :Windows<CR>
-  nnoremap <silent> <leader>; :BLines<CR>
-  nnoremap <silent> <leader>. :Lines<CR>
-  nnoremap <silent> <leader>o :BTags<CR>
-  nnoremap <silent> <leader>O :Tags<CR>
-  nnoremap <silent> <leader>? :History<CR>
-  nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
-  nnoremap <silent> <leader>, :AgIn
-
-  nnoremap <silent> K :call SearchWordWithAg()<CR>
-  vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
-  nnoremap <silent> <leader>gl :Commits<CR>
-  nnoremap <silent> <leader>ga :BCommits<CR>
-  nnoremap <silent> <leader>ft :Filetypes<CR>
-
-  imap <C-x><C-f> <plug>(fzf-complete-file-ag)
-  imap <C-x><C-l> <plug>(fzf-complete-line)
-
-  function! SearchWordWithAg()
-    execute 'Ag' expand('<cword>')
-  endfunction
-
-  function! SearchVisualSelectionWithAg() range
-    let old_reg = getreg('"')
-    let old_regtype = getregtype('"')
-    let old_clipboard = &clipboard
-    set clipboard&
-    normal! ""gvy
-    let selection = getreg('"')
-    call setreg('"', old_reg, old_regtype)
-    let &clipboard = old_clipboard
-    execute 'Ag' selection
-  endfunction
-
-  function! SearchWithAgInDirectory(...)
-    call fzf#vim#ag(join(a:000[1:], ' '), extend({'dir': a:1}, g:fzf#vim#default_layout))
-  endfunction
-  command! -nargs=+ -complete=dir AgIn call SearchWithAgInDirectory(<f-args>)
-
-
 " Location and Quick list
 noremap <F12> :ccl <bar> lcl <bar> pc<CR>
 noremap <F11> :cw<CR>
 noremap <F10> :lw<CR>
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<RIGHT>"
-let g:UltiSnipsJumpBackwardTrigger="<LEFT>"
 
 " Always draw the signcolumn.
 set signcolumn=yes
@@ -664,18 +642,27 @@ endfunction
 " 	map <C-l> <C-w>l
 >>>>>>> 98e52fa (Added tasksync)
 
-" Replace ex mode with gq
-	map Q gq
+" " Replace ex mode with gq
+" 	map Q gq
 
-" Check file in shellcheck:
-	map <leader>s :!clear && shellcheck -x %<CR>
+" " Check file in shellcheck:
+" 	map <leader>s :!clear && shellcheck -x %<CR>
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
 
+<<<<<<< HEAD
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler "%:p"<CR>
+||||||| parent of 4f31f60 (Added and update stuff)
+" Compile document, be it groff/LaTeX/markdown/etc.
+	map <leader>c :w! \| !compiler "<c-r>%"<CR>
+=======
+" " Compile document, be it groff/LaTeX/markdown/etc.
+" 	map <leader>c :w! \| !compiler "<c-r>%"<CR>
+>>>>>>> 4f31f60 (Added and update stuff)
 
+<<<<<<< HEAD
 " Open corresponding .pdf/.html or preview
 	map <leader>p :!opout "%:p"<CR>
 
@@ -704,6 +691,16 @@ endfunction
 =======
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
+||||||| parent of 4f31f60 (Added and update stuff)
+" Open corresponding .pdf/.html or preview
+	map <leader>p :!opout <c-r>%<CR><CR>
+
+" Replace all is aliased to S.
+	nnoremap S :%s//g<Left><Left>
+=======
+" " Open corresponding .pdf/.html or preview
+" 	map <leader>p :!opout <c-r>%<CR><CR>
+>>>>>>> 4f31f60 (Added and update stuff)
 
 >>>>>>> 9c1f369 (Added coc.nvim)
 " Save file as sudo on files that require root permission
@@ -764,21 +761,28 @@ endfunction
 	autocmd BufWritePre *.[ch] %s/\%$/\r/e
 =======
 	" autocmd BufWritePre * %s/\n\+\%$//e
+<<<<<<< HEAD
 	autocmd BufWritePre *.[ch] %s/\%$/\r/e
 >>>>>>> 7390e82 (Stuff added)
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost bm-files,bm-dirs !shortcuts
+||||||| parent of 4f31f60 (Added and update stuff)
+	autocmd BufWritePre *.[ch] %s/\%$/\r/e
+
+" When shortcut files are updated, renew bash and ranger configs with new material:
+	autocmd BufWritePost bm-files,bm-dirs !shortcuts
+=======
+	" autocmd BufWritePre *.[ch] %s/\%$/\r/e
+>>>>>>> 4f31f60 (Added and update stuff)
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
-" Recompile dwmblocks on config edit.
-	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; make install && { killall -q dwmblocks;setsid -f dwmblocks }
-
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost files,directories !shortcuts
+<<<<<<< HEAD
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
@@ -814,3 +818,36 @@ nnoremap <leader>h :call ToggleHiddenAll()<CR>
 " So ":vs ;cfz" will expand into ":vs /home/<user>/.config/zsh/.zshrc"
 " if typed fast without the timeout.
 silent! source ~/.config/nvim/shortcuts.vim
+||||||| parent of 4f31f60 (Added and update stuff)
+
+" Run xrdb whenever Xdefaults or Xresources are updated.
+	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+
+" Update binds when sxhkdrc is updated.
+	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
+" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
+if &diff
+    highlight! link DiffText MatchParen
+endif
+
+" Function for toggling the bottom statusbar:
+let s:hidden_all = 1
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+nnoremap <leader>h :call ToggleHiddenAll()<CR>
+=======
+>>>>>>> 4f31f60 (Added and update stuff)

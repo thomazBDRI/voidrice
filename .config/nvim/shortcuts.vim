@@ -29,3 +29,4 @@ cmap ;cfmc /home/thomaz/.config/ncmpcpp/config
 cmap ;cfl /home/thomaz/.config/lf/lfrc
 cmap ;cfL /home/thomaz/.config/lf/scope
 cmap ;cfX /home/thomaz/.config/sxiv/exec/key-handler
+cmap ;cft /home/thomaz/.config/tmux/tmux.conf

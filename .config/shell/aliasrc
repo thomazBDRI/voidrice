@@ -18,8 +18,6 @@ se() {
 	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
 	;}
 
-command -v hub >/dev/null && eval "$(hub alias -s)"
-
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
@@ -32,21 +30,20 @@ alias \
 	yta="yt -x -f bestaudio/best" \
 	ytt="yt --skip-download --write-thumbnail" \
 	ffmpeg="ffmpeg -hide_banner" \
-    batf="find . -exec bat {} + -name"
+	batf="find . -exec bat {} + -name" \
+  cat="bat"
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi" \
-	ip="ip -color=auto"
+	ls="exa --icons" \
+	grep="rga" \
+	diff="diff --color=auto {} | delta" \
+	ccat="highlight --out-format=ansi"
 
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
 	g="git" \
-	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="shutdown -h now" \
 	e="$EDITOR" \
@@ -56,17 +53,11 @@ alias \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
 	z="zathura" \
-    s="sudo systemctl"
+  s="sudo systemctl"
 
-# This alias is important. It enables the `pauseallmpv` command.
-alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
-
-alias \
+  alias \
 	lf="lfub" \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
-	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	tmux="tmux attach || tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
-    man="batman" \
-    ansible="ansible -i ~/.config/ansible/hosts" \
-    flatpak="flatpak --installation=extra" \
+  man="batman"

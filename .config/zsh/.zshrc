@@ -88,10 +88,6 @@ bindkey -M visual '^[[P' vi-delete
 
 # Functions from FZF examples
 
-# FASD
-eval "$(fasd --init auto)"
-
-
 # fuzzy grep open via ag with line number
 vg() {
   local file
@@ -125,13 +121,6 @@ fkill() {
     then
         echo $pid | xargs kill -${1:-9}
     fi
-}
-
-# fasd & fzf change directory - jump using `fasd` if given argument, filter output of `fasd` using `fzf` else
-fz() {
-    [ $# -gt 0 ] && fasd_cd -d "$*" && return
-    local dir
-    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
 }
 
 # Select a running docker container to stop
@@ -176,12 +165,14 @@ while read -r line; do
   }"
 done <<< "$directories"
 
-
-# Marker
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-
 # Load forgit plugin
-source /usr/share/zsh/plugins/forgit/forgit.zsh 2>/dev/null
+# source /usr/share/zsh/plugins/forgit/forgit.zsh 2>/dev/null
+
+# ASDF
+. /opt/asdf-vm/asdf.sh
+
+# navi
+eval "$(navi widget zsh)"
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

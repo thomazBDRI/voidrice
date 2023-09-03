@@ -10,22 +10,4 @@ cfv	~/.config/nvim/init.vim
 cfu	~/.config/newsboat/urls
 cfn	~/.config/newsboat/config
 cft ~/.tmux.conf
-cfmb	~/.config/ncmpcpp/bindings
-cfmc	~/.config/ncmpcpp/config
-cfsx ~/.config/sxhkd/sxhkdrc
-cfzp ~/.zprofile
-cfxp ~/.xprofile
-cfsxi ~/.config/sxiv/exec/key-handler
-
-# programs
-fdwmc ~/programs/dwm/dwm.c
-
-# {{{ Env files
-  # {{{ Zoni
-  ezcf ~/envs/zoni/.venv/bin/activate
-  # }}}
-
-  # {{{ Jus
-  ejcf ~/envs/jus/.venv/bin/activate
-  # }}}
-# }}}
+cfs ~/.config/shell/profile

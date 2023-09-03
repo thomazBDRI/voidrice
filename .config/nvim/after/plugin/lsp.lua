@@ -14,16 +14,16 @@ lsp.ensure_installed({
   'tsserver',
 })
 
--- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  }
-})
+-- -- Fix Undefined global 'vim'
+-- lsp.configure('lua-language-server', {
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = { 'vim' }
+--       }
+--     }
+--   }
+-- })
 
 lsp.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false }

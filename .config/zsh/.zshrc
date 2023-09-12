@@ -174,5 +174,21 @@ done <<< "$directories"
 # navi
 eval "$(navi widget zsh)"
 
+# Java home
+# . ~/.asdf/plugins/java/set-java-home.zsh
+
+# Direnv
+eval "$(direnv hook zsh)"
+
+# Direnv python virtualenv ps1
+setopt PROMPT_SUBST
+
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+PS1='$(show_virtual_env)'$PS1
+
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

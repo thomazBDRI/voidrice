@@ -5,9 +5,9 @@ bf	${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-files	# This file, a list of bookm
 bd	${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs		# A list of bookmarked directories similar to this file
 
 # config files
-cfv	${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim		# vim/neovim config
 cfz	$ZDOTDIR/.zshrc						# zsh (shell) config
 cfp	${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile		# profile file for login settings for zsh
+cfa	${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc
 cfz	~/.config/zsh/.zshrc
 cfv	~/.config/nvim/init.lua
 cfu	~/.config/newsboat/urls

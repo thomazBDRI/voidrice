@@ -35,7 +35,8 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="eza --icons --tree --level=2 -a --long --header --accessed" \
+	ls="eza --icons" \
+	ll="eza --icons --tree --level=2 -a --long --header --accessed" \
 	grep="rga" \
 	diff="diff --color=auto {} | delta" \
 	ccat="highlight --out-format=ansi"

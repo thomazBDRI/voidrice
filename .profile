@@ -1,1 +1,0 @@
-/home/thomaz/dotfiles/.zprofile

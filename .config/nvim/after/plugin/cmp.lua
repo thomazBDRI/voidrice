@@ -1,7 +1,13 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 

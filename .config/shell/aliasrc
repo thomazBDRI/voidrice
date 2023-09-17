@@ -18,6 +18,18 @@ se() {
 	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
 	;}
 
+# Rust alternatives
+alias \
+	batf="find . -exec bat {} + -name" \
+  cat="bat" \
+	ls="eza --icons" \
+	ll="eza --icons --tree --level=2 -a --long --header --accessed" \
+	grep="rga" \
+	diff="diff --color=auto {} | delta" \
+  top="bottom" \
+  man="batman"
+
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
@@ -30,16 +42,6 @@ alias \
 	yta="yt -x -f bestaudio/best" \
 	ytt="yt --skip-download --write-thumbnail" \
 	ffmpeg="ffmpeg -hide_banner" \
-	batf="find . -exec bat {} + -name" \
-  cat="bat"
-
-# Colorize commands when possible.
-alias \
-	ls="eza --icons" \
-	ll="eza --icons --tree --level=2 -a --long --header --accessed" \
-	grep="rga" \
-	diff="diff --color=auto {} | delta" \
-	ccat="highlight --out-format=ansi"
 
 # These common commands are just too long! Abbreviate them.
 alias \
@@ -57,8 +59,7 @@ alias \
   s="sudo systemctl"
 
   alias \
-	lf="lfub" \
-	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
-	tmux="tmux attach || tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
-  man="batman"
+    lf="lfub" \
+    magit="nvim -c MagitOnly" \
+    ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
+    tmux="tmux attach || tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"

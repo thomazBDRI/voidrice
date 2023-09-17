@@ -134,11 +134,6 @@ _G.packer_plugins = {
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/dressing.nvim",
     url = "https://github.com/stevearc/dressing.nvim"
   },
-  ["filetype.nvim"] = {
-    loaded = true,
-    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/filetype.nvim",
-    url = "https://github.com/nathom/filetype.nvim"
-  },
   ["flutter-tools.nvim"] = {
     loaded = true,
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",

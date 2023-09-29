@@ -17,6 +17,7 @@ hash -d bd=/home/thomaz/.config/shell/bm-dirs
 hash -d cfz=/home/thomaz/.config/zsh/.zshrc 
 hash -d cfp=/home/thomaz/.config/shell/profile 
 hash -d cfa=/home/thomaz/.config/shell/aliasrc 
+hash -d cfx=/home/thomaz/.config/x11/xprofile 
 hash -d cfz=~/.config/zsh/.zshrc 
 hash -d cfv=~/.config/nvim/init.lua 
 hash -d cfu=~/.config/newsboat/urls 

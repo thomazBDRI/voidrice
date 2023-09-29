@@ -18,6 +18,7 @@ bd="$EDITOR /home/thomaz/.config/shell/bm-dirs" \
 cfz="$EDITOR /home/thomaz/.config/zsh/.zshrc" \
 cfp="$EDITOR /home/thomaz/.config/shell/profile" \
 cfa="$EDITOR /home/thomaz/.config/shell/aliasrc" \
+cfx="$EDITOR /home/thomaz/.config/x11/xprofile" \
 cfz="$EDITOR ~/.config/zsh/.zshrc" \
 cfv="$EDITOR ~/.config/nvim/init.lua" \
 cfu="$EDITOR ~/.config/newsboat/urls" \

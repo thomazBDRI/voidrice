@@ -8,11 +8,7 @@ local lsp = require('lsp-zero').preset({
 })
 
 -- (Optional) Configure lua language server for neovim
-lsp.nvim_workspace()
-
-lsp.ensure_installed({
-  'tsserver',
-})
+-- lsp.nvim_workspace()
 
 -- -- Fix Undefined global 'vim'
 -- lsp.configure('lua-language-server', {
@@ -67,6 +63,18 @@ lsp.set_sign_icons({
   warn = '⚠️',
   hint = '🔍',
   info = '👉'
+})
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {'tsserver', 'rust_analyzer'},
+  handlers = {
+    lsp.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+  }
 })
 
 lsp.setup()

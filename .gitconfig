@@ -19,3 +19,5 @@
 	name = Thomaz Andrade
 [init]
 	defaultBranch = main
+[safe]
+	directory = /opt/flutter

@@ -1,6 +1,7 @@
 # vim: filetype=sh
 alias cac="cd /home/thomaz/.cache && ls " \
 cf="cd /home/thomaz/.config && ls " \
+cfn="cd /home/thomaz/.config && ls " \
 D="cd /home/thomaz/Downloads && ls " \
 d="cd /home/thomaz/Documents && ls " \
 dt="cd /home/thomaz/.local/share && ls " \

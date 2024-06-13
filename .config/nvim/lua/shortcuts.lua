@@ -1,5 +1,6 @@
 vim.keymap.set('c', ';cac', '/home/thomaz/.cache')
 vim.keymap.set('c', ';cf', '/home/thomaz/.config')
+vim.keymap.set('c', ';cfn', '/home/thomaz/.config')
 vim.keymap.set('c', ';D', '/home/thomaz/Downloads')
 vim.keymap.set('c', ';d', '/home/thomaz/Documents')
 vim.keymap.set('c', ';dt', '/home/thomaz/.local/share')

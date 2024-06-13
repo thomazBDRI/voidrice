@@ -1,5 +1,6 @@
 hash -d cac=/home/thomaz/.cache 
 hash -d cf=/home/thomaz/.config 
+hash -d cfn=/home/thomaz/.config 
 hash -d D=/home/thomaz/Downloads 
 hash -d d=/home/thomaz/Documents 
 hash -d dt=/home/thomaz/.local/share 

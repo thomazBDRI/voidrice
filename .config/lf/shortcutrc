@@ -1,5 +1,6 @@
 map Ccac cd "/home/thomaz/.cache" 
 map Ccf cd "/home/thomaz/.config" 
+map Ccfn cd "/home/thomaz/.config" 
 map CD cd "/home/thomaz/Downloads" 
 map Cd cd "/home/thomaz/Documents" 
 map Cdt cd "/home/thomaz/.local/share" 

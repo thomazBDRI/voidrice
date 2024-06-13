@@ -165,9 +165,6 @@ while read -r line; do
   }"
 done <<< "$directories"
 
-# Load forgit plugin
-# source /usr/share/zsh/plugins/forgit/forgit.zsh 2>/dev/null
-
 # ASDF
 . /opt/asdf-vm/asdf.sh
 
@@ -179,6 +176,9 @@ eval "$(navi widget zsh)"
 
 # Direnv
 eval "$(direnv hook zsh)"
+
+# Forgit
+source /usr/share/zsh/plugins/forgit/forgit.plugin.zsh
 
 # Direnv python virtualenv ps1
 setopt PROMPT_SUBST

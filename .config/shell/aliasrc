@@ -24,10 +24,10 @@ alias \
   cat="bat" \
 	ls="eza --icons" \
 	ll="eza --icons --tree --level=2 -a --long --header --accessed" \
-	grep="rga" \
 	diff="diff --color=auto {} | delta" \
   top="bottom" \
   man="batman"
+	# grep="rga" \
 
 
 # Verbosity and settings that you pretty much just always are going to want.

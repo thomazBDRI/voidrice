@@ -1,4 +1,8 @@
 local builtin = require('telescope.builtin')
+local telescope = require('telescope')
+
+telescope.load_extension('fzf')
+telescope.load_extension('flutter')
 
 vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, {})
 vim.keymap.set('n', '<leader>lw', builtin.lsp_workspace_symbols, {})
@@ -12,5 +16,3 @@ end)
 vim.keymap.set('n', '<leader>fk', function()
   builtin.grep_string();
 end)
-
-require('telescope').load_extension('fzf')

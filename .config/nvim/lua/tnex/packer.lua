@@ -13,15 +13,6 @@ return require('packer').startup(function(use)
     }
   }
 
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    config = function()
-      require("rose-pine").setup()
-      vim.cmd('colorscheme rose-pine')
-    end
-  })
-
   use('navarasu/onedark.nvim')
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
@@ -35,7 +26,6 @@ return require('packer').startup(function(use)
     after = "nvim-treesitter",
   }
 
-  use('nvim-treesitter/playground')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('tpope/vim-unimpaired')
@@ -43,7 +33,6 @@ return require('packer').startup(function(use)
   -- use('tpope/vim-commentary') Using nvim comment as a test
   use('tpope/vim-repeat')
   use('airblade/vim-gitgutter')
-  use('chrisbra/Colorizer')
 
   use {
     'akinsho/flutter-tools.nvim',
@@ -54,39 +43,25 @@ return require('packer').startup(function(use)
   }
 
   -- tests what is this for?
-  use {
-    'nvim-lua/popup.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    }
-  }
-
-  -- Some test line
-  use {
-    'windwp/windline.nvim'
-  }
+  -- use {
+  -- 'nvim-lua/popup.nvim',
+  -- requires = {
+  -- 'nvim-lua/plenary.nvim',
+  --}
+  --}
 
   use {
     'yamatsum/nvim-cursorline'
   }
-
-  -- I looked for it for sow long
+  --
+  -- -- I looked for it for sow long
   use {
     'windwp/nvim-ts-autotag'
   }
 
-  -- Don't know if i like it still
-  -- use {
-  --   'lukas-reineke/indent-blankline.nvim'
-  -- }
-
   -- This one will mess things up
   use {
     'nvimdev/lspsaga.nvim'
-  }
-
-  use {
-    "tversteeg/registers.nvim",
   }
 
   use {
@@ -106,11 +81,9 @@ return require('packer').startup(function(use)
     }
   }
 
-  use { "cbochs/portal.nvim" }
-
   -- Terminal stuff test
   use { "akinsho/toggleterm.nvim" }
-  use { "pianocomposer321/consolation.nvim" }
+  -- use { "pianocomposer321/consolation.nvim" }
 
   -- Test comment stuff
   use { "numToStr/Comment.nvim" }
@@ -136,7 +109,10 @@ return require('packer').startup(function(use)
       -- Snippets
       { 'L3MON4D3/LuaSnip' },             -- Required
       { 'rafamadriz/friendly-snippets' }, -- Optional
-      { 'tzachar/cmp-tabnine',              run = './install.sh' }
+      -- { 'tzachar/cmp-tabnine',              run = './install.sh' }
+
+      -- misc
+      { 'lukas-reineke/lsp-format.nvim' }
     }
   }
 

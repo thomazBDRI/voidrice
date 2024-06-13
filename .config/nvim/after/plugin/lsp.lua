@@ -20,9 +20,16 @@ local lsp = require('lsp-zero').preset({
 --     }
 --   }
 -- })
+--
 
-lsp.on_attach(function(_, bufnr)
+require("lsp-format").setup({})
+
+lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
+
+  if client.supports_method('textDocument/formatting') then
+    require('lsp-format').on_attach(client)
+  end
 
   -- vim.keymap.set("n", "ld", function() vim.lsp.buf.definition() end, opts) Moved to Telescope
   -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts) Moved to Lspsaga
@@ -41,10 +48,10 @@ lsp.on_attach(function(_, bufnr)
 
   vim.keymap.set("n", "<leader>lj", '<CMD>Lspsaga diagnostic_jump_next<CR>', opts)
   vim.keymap.set("n", "<leader>lk", '<CMD>Lspsaga diagnostic_jump_prev<CR>', opts)
-  vim.keymap.set("n", "<leader>ln",
-    "<CMD>lua require('lspsaga.diagnostic'):goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>", opts)
-  vim.keymap.set("n", "<leader>le",
-    "<CMD>lua require('lspsaga.diagnostic'):goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>", opts)
+  -- vim.keymap.set("n", "<leader>ln",
+  -- "<CMD>lua require('lspsaga.diagnostic'):goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>", opts)
+  -- vim.keymap.set("n", "<leader>le",
+  -- "<CMD>lua require('lspsaga.diagnostic'):goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>", opts)
 
   vim.keymap.set("n", "<leader>lp", '<cmd>Lspsaga peek_definition<cr>', opts)
   vim.keymap.set("n", "<leader>lr", '<cmd>Lspsaga rename<cr>', opts)
@@ -54,8 +61,6 @@ lsp.on_attach(function(_, bufnr)
   -- vim.keymap.set("n", "<leader>le", function() vim.lsp.buf.references() end, opts) Moved to Telescope
   -- vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts) -- Moved to lspsaga
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-
-  lsp.buffer_autoformat()
 end)
 
 lsp.set_sign_icons({
@@ -67,7 +72,7 @@ lsp.set_sign_icons({
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer'},
+  ensure_installed = { 'tsserver', 'rust_analyzer' },
   handlers = {
     lsp.default_setup,
     lua_ls = function()
@@ -79,13 +84,9 @@ require('mason-lspconfig').setup({
 
 lsp.setup()
 
-local dart_lsp = lsp.build_options('dartls', {})
+-- local dart_lsp = lsp.build_options('dartls', {})
 
-require('flutter-tools').setup({
-  lsp = {
-    capabilities = dart_lsp.capabilities
-  }
-})
+require('flutter-tools').setup({})
 
 vim.diagnostic.config {
   virtual_text = false,
@@ -106,4 +107,8 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
   { border = 'rounded' }
 )
 
-require("lspsaga").setup({})
+require("lspsaga").setup({
+  lightbulb = {
+    enable = false
+  }
+})

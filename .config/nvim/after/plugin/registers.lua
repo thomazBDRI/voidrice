@@ -1,1 +1,1 @@
-require("registers").setup()
+-- require("registers").setup()

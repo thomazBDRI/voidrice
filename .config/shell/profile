@@ -49,6 +49,14 @@ export VIMWIKI_TEMPLATE="${VIMWIKI}/templates"
 export USERBIN="$HOME/.local/bin/programs"
 export USERMAN="${XDG_DATA_HOME:-$HOME/.local/share}/man"
 
+# Android Test
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
+export PATH=$PATH:$ANDROID_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
+
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -67,6 +75,9 @@ export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
+
+# Flutter
+export CHROME_EXECUTABLE=google-chrome-stable
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && setsid shortcuts >/dev/null 2>&1
 

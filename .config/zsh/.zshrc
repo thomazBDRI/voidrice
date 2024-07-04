@@ -190,5 +190,8 @@ show_virtual_env() {
 }
 PS1='$(show_virtual_env)'$PS1
 
+# Rust
+. /home/thomaz/.asdf/installs/rust/1.79.0/env
+
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

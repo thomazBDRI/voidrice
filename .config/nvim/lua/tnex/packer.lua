@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.2',
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
   use('tpope/vim-unimpaired')
   use('tpope/vim-surround')
-  -- use('tpope/vim-commentary') Using nvim comment as a test
+  use('tpope/vim-commentary') -- Using nvim comment as a test
   use('tpope/vim-repeat')
   use('airblade/vim-gitgutter')
 
@@ -86,7 +86,7 @@ return require('packer').startup(function(use)
   -- use { "pianocomposer321/consolation.nvim" }
 
   -- Test comment stuff
-  use { "numToStr/Comment.nvim" }
+  -- use { "numToStr/Comment.nvim" }
   use { "JoosepAlviste/nvim-ts-context-commentstring" }
 
   use {

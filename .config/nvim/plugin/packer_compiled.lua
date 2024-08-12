@@ -79,6 +79,16 @@ _G.packer_plugins = {
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["awesome-flutter-snippets"] = {
+    loaded = true,
+    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/awesome-flutter-snippets",
+    url = "https://github.com/Nash0x7E2/awesome-flutter-snippets"
+  },
+  ["bloc.nvim"] = {
+    loaded = true,
+    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/bloc.nvim",
+    url = "https://github.com/RobertPietraru/bloc.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -104,20 +114,15 @@ _G.packer_plugins = {
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-tabnine"] = {
+    loaded = true,
+    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
+    url = "https://github.com/tzachar/cmp-tabnine"
+  },
   cmp_luasnip = {
     loaded = true,
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  ["dressing.nvim"] = {
-    loaded = true,
-    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/dressing.nvim",
-    url = "https://github.com/stevearc/dressing.nvim"
-  },
-  ["flutter-tools.nvim"] = {
-    loaded = true,
-    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
-    url = "https://github.com/akinsho/flutter-tools.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -153,6 +158,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/noice.nvim",
     url = "https://github.com/folke/noice.nvim"
+  },
+  ["none-ls.nvim"] = {
+    loaded = true,
+    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/none-ls.nvim",
+    url = "https://github.com/nvimtools/none-ls.nvim"
   },
   ["nui.nvim"] = {
     loaded = true,
@@ -247,11 +257,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["toggleterm.nvim"] = {
-    loaded = true,
-    path = "/home/thomaz/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
-    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["trouble.nvim"] = {
     loaded = true,

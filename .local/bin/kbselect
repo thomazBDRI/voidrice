@@ -1,0 +1,25 @@
+#!/bin/sh
+
+variant=""
+
+notify() {
+  notify-send "kbselect" "$layout $variant"
+  remaps
+}
+
+setxkb() {
+  setxkbmap "$layout" "$variant"
+  pkill -RTMIN+30 "${STATUSBAR:-dwmblocks}"
+}
+
+choosevariant()
+{
+variant="$(localectl list-x11-keymap-variants "$layout" | dmenu -l 15)"
+}
+
+layout="$(localectl list-x11-keymap-layouts | dmenu -l 15)"
+[ -z "$layout" ] && exit 0
+
+choosevariant
+setxkb
+notify

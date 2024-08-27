@@ -1,11 +1,4 @@
-local lsp = require("lsp-zero").preset({
-	name = "minimal",
-	set_lsp_keymaps = true,
-	manage_nvim_cmp = {
-		set_sources = "recommended",
-	},
-	suggest_lsp_servers = false,
-})
+local lsp = require("lsp-zero")
 
 -- (Optional) Configure lua language server for neovim
 -- lsp.nvim_workspace()
@@ -91,6 +84,12 @@ require("mason-lspconfig").setup({
 			require("lspconfig").lua_ls.setup(lua_opts)
 		end,
 	},
+})
+
+require('lspconfig').lua_ls.setup({
+  on_init = function(client)
+    lsp.nvim_lua_settings(client, {})
+  end,
 })
 
 lsp.setup()

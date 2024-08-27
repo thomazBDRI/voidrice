@@ -28,6 +28,6 @@ fi
 [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] && ethericon="🌐" || ethericon="❎"
 
 # TUN
-[ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && tunicon=" 🔒"
+tunicon=$(systemctl is-active wg-quick@proton-br | sed 's/^active$/ 🔒/;s/^inactive$//')
 
 printf "%s%s%s\n" "$wifiicon" "$ethericon" "$tunicon"

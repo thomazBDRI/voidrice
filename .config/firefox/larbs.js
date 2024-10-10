@@ -41,7 +41,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("network.http.referer.XOriginPolicy", 0);
 
 // Disable Firefox sync and its menu entries
-user_pref("identity.fxaccounts.enabled", false);
+// user_pref("identity.fxaccounts.enabled", false);
 
 // Fix the issue where right mouse button instantly clicks
 user_pref("ui.context_menus.after_mouseup", true);

@@ -1,26 +1,12 @@
 local lsp = require("lsp-zero")
 
--- (Optional) Configure lua language server for neovim
--- lsp.nvim_workspace()
-
--- -- Fix Undefined global 'vim'
--- lsp.configure('lua-language-server', {
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = { 'vim' }
---       }
---     }
---   }
--- })
---
-
 require("lsp-format").setup({})
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	client.server_capabilities.semanticTokensProvider = nil
+
 	if client.supports_method("textDocument/formatting") then
 		require("lsp-format").on_attach(client)
 	end
@@ -76,7 +62,6 @@ lsp.set_sign_icons({
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "tsserver", "rust_analyzer" },
 	handlers = {
 		lsp.default_setup,
 		lua_ls = function()
@@ -86,26 +71,53 @@ require("mason-lspconfig").setup({
 	},
 })
 
-require('lspconfig').lua_ls.setup({
-  on_init = function(client)
-    lsp.nvim_lua_settings(client, {})
-  end,
+require("lspconfig").lua_ls.setup({
+	on_init = function(client)
+		lsp.nvim_lua_settings(client, {})
+	end,
+})
+
+require("lspconfig").dartls.setup({
+	cmd = { "dart", "language-server", "--protocol=lsp" },
+})
+
+require("lspconfig").tailwindcss.setup({
+	filetypes = { "templ", "astro", "javascript", "typescript", "react", "go" },
+	settings = {
+		tailwindCSS = {
+			includeLanguages = {
+				templ = "html",
+			},
+			experimental = {
+				classRegex = {
+					"Class\\(([^)]*)\\)",
+					'["`]([^"`]*)["`]',
+					"Classes\\(([^)]*)\\)",
+					'["`]([^"`]*)["`]',
+					"Class\\{([^)]*)\\}",
+					'["`]([^"`]*)["`]',
+					"Classes\\{([^)]*)\\}",
+					'["`]([^"`]*)["`]',
+					'Class:\\s*["`]([^"`]*)["`]',
+					'Classes:\\s*["`]([^"`]*)["`]',
+				},
+			},
+		},
+	},
 })
 
 lsp.setup()
 
--- local dart_lsp = lsp.build_options('dartls', {})
-
 require("flutter-tools").setup({})
 
-vim.diagnostic.config({
-	virtual_text = false,
-	severity_sort = true,
-	float = {
-		border = "rounded",
-		source = "always",
-	},
-})
+-- vim.diagnostic.config({
+--   virtual_text = false,
+--   severity_sort = true,
+--   float = {
+--     border = "rounded",
+--     source = "always",
+--   },
+-- })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 

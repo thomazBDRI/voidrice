@@ -14,3 +14,5 @@ sc  $HOME/.local/bin
 src $HOME/.local/src
 vv  ${XDG_VIDEOS_DIR:-$HOME/Videos}
 dot $HOME/.local/src/voidrice/
+wap $HOME/repos/wap/
+wapw $HOME/repos/wap/website/

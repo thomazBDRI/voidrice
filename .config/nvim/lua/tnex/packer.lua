@@ -84,6 +84,10 @@ return require("packer").startup(function(use)
 		"norcalli/nvim-colorizer.lua",
 	})
 
+  use({
+    "folke/todo-comments.nvim"
+  })
+
 	-- New UI?
 	use({
 		"folke/noice.nvim",
@@ -137,4 +141,6 @@ return require("packer").startup(function(use)
 			{ "nvim-tree/nvim-web-devicons" },
 		},
 	})
+
+	use({ "mrjones2014/op.nvim", run = "make install" })
 end)

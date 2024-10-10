@@ -6,7 +6,7 @@
 # to clean up.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:${$(find ~/.local/bin/ -type d -printf %p:)%%:}:$HOME/.pub-cache/bin"
+export PATH="$PATH:${$(find ~/.local/bin/ -type d -printf %p:)%%:}:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin/"
 
 unsetopt PROMPT_SP
 
@@ -37,7 +37,7 @@ export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export VIMWIKI="${XDG_DATA_HOME:-$HOME/.local/share}/wiki"
 export VIMWIKI_HTML="${VIMWIKI}/export"
 export VIMWIKI_TEMPLATE="${VIMWIKI}/templates"
-export SSH_AUTH_SOCK=~/.1password/agent.sock
+export OPENCV_LOG_LEVEL=ERROR
 
 
 # Other program settings:
@@ -57,6 +57,9 @@ export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' 
+
 
 # Flutter
 export CHROME_EXECUTABLE=google-chrome-stable

@@ -20,14 +20,14 @@ se() {
 
 # Rust alternatives
 alias \
-	batf="find . -exec bat {} + -name" \
   cat="bat" \
-	ls="eza --icons" \
-	ll="eza --icons --tree --level=2 -a --long --header --accessed" \
+	ls="eza --icons=always" \
+	ll="eza --icons=always --tree --level=2 -a --long --header --accessed" \
 	diff="diff --color=auto {} | delta" \
-  top="bottom" \
-  man="batman"
-	# grep="rga" \
+  top="btm" \
+  man="batman" \
+	grep="rga" \
+  ps="procs"
 
 
 # Verbosity and settings that you pretty much just always are going to want.
@@ -41,7 +41,7 @@ alias \
 	yt="yt-dlp --embed-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
 	ytt="yt --skip-download --write-thumbnail" \
-	ffmpeg="ffmpeg -hide_banner" \
+	ffmpeg="ffmpeg -hide_banner"
 
 # These common commands are just too long! Abbreviate them.
 alias \
@@ -52,9 +52,6 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
 	z="zathura" \
   s="sudo systemctl"
 

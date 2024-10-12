@@ -17,7 +17,7 @@ choosevariant()
 variant="$(localectl list-x11-keymap-variants "$layout" | dmenu -l 15)"
 }
 
-layout="$(localectl list-x11-keymap-layouts | dmenu -l 15)"
+layout="$(printf "us\\nbr\\n" | dmenu -l 15)"
 [ -z "$layout" ] && exit 0
 
 choosevariant

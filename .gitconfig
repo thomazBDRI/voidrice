@@ -27,3 +27,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[alias]
+	pr = gh pr create --base=develop -a @me -f -l \"open to review\" -r lhalegria -r renatosousa-github

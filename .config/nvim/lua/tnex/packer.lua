@@ -28,6 +28,8 @@ return require("packer").startup(function(use)
 		after = "nvim-treesitter",
 	})
 
+	use("chentoast/marks.nvim")
+
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
 	use("tpope/vim-unimpaired")
@@ -84,9 +86,9 @@ return require("packer").startup(function(use)
 		"norcalli/nvim-colorizer.lua",
 	})
 
-  use({
-    "folke/todo-comments.nvim"
-  })
+	use({
+		"folke/todo-comments.nvim",
+	})
 
 	-- New UI?
 	use({

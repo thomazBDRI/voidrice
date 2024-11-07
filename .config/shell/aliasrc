@@ -16,6 +16,7 @@ alias \
   top="btm" \
   man="batman" \
 	grep="batgrep" \
+  find="fd" \
   ps="procs"
 
 # Verbosity and settings that you pretty much just always are going to want.

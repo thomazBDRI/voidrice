@@ -1,5 +1,0 @@
-steam.sh[11464]: Running Steam on artix rolling 64-bit
-steam.sh[11464]: STEAM_RUNTIME is enabled automatically
-setup.sh[11544]: Steam runtime environment up-to-date!
-steam.sh[11464]: Steam client's requirements are satisfied
-WARNING: setlocale('en_US.UTF-8') failed, using locale: 'C'. International characters may not work.

@@ -6,19 +6,15 @@
 # to clean up.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:${$(find ~/.local/bin/ -type d -printf %p:)%%:}:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin/"
+export PATH="$PATH:${$(find ~/.local/bin/ -type d -printf %p:)%%:}:$HOME/.local/share/go/bin/"
 
 unsetopt PROMPT_SP
 
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="kak"
 export TERMINAL="st"
 export TERMINAL_PROG="st"
 export BROWSER="librewolf"
-
-# Change the default crypto/weather monitor sites.
-# export CRYPTOURL="rate.sx"
-# export WTTRURL="wttr.in"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -28,20 +24,14 @@ export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
-export VIMWIKI="${XDG_DATA_HOME:-$HOME/.local/share}/wiki"
-export VIMWIKI_HTML="${VIMWIKI}/export"
-export VIMWIKI_TEMPLATE="${VIMWIKI}/templates"
-export OPENCV_LOG_LEVEL=ERROR
+export VAGRANT_HOME="$HOME/.local/share/vagrant"
 
 
 # Other program settings:
-export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS=-R
@@ -58,11 +48,7 @@ export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
 export SSH_AUTH_SOCK=~/.1password/agent.sock
-export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' 
 
-
-# Flutter
-export CHROME_EXECUTABLE=google-chrome-stable
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && setsid shortcuts >/dev/null 2>&1
 

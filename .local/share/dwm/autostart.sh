@@ -1,7 +1,19 @@
 xrandr --dpi 96
 setbg &
 localsend --hidden &
-picom -b
+1password --silent &
 dunst &
 unclutter &
 dwmblocks &
+dex -a &
+remaps &
+blueman-applet &
+remapd &
+sudo tailscale up &
+
+librewolf &
+slack -u &
+todoist-nativefier &
+notion-app &
+spotify-launcher &
+obsidian &

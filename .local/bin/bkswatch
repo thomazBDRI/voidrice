@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-while true; do
-  ls -d ~/books/* | entr -d -n -p sh -c 'pgrep kindlesync || kindlesync'
-done

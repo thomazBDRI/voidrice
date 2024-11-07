@@ -1,7 +1,5 @@
 .netrwhist
-.config/nvim/plugged/
-.config/nvim/autoload/
-.config/vifm/vifmshortcuts
+.config/nvim/plugin/packer_compiled.lua
 .config/zsh/.zcompdump
 .local/share/nvim
 .config/mpd/database

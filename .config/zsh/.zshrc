@@ -88,19 +88,6 @@ bindkey -M visual '^[[P' vi-delete
 
 # Functions from FZF examples
 
-# fuzzy grep open via ag with line number
-vg() {
-  local file
-  local line
-
-  read -r file line <<<"$(ag --ignore tags --nobreak --noheading $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
-
-  if [[ -n $file ]]
-  then
-     vim $file +$line
-  fi
-}
-
 # find-in-file - usage: fif <searchTerm> or fif "string with spaces" or fif "regex"
 fif() {
     if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
@@ -123,14 +110,6 @@ fkill() {
     fi
 }
 
-# Select a running docker container to stop
-function ds() {
-  local cid
-  cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
-
-  [ -n "$cid" ] && docker stop "$cid"
-}
-
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
@@ -145,7 +124,6 @@ fo() (
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
   fi
 )
-
 
 # Declare function to open files from directories in `.config/directories`
 # with fzf, the name for each function is fz`shortcut`
@@ -165,6 +143,18 @@ while read -r line; do
   }"
 done <<< "$directories"
 
+# Direnv python virtualenv ps1
+setopt PROMPT_SUBST
+
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+PS1='$(show_virtual_env)'$PS1
+
+## Programming stuff
+
 # ASDF
 . /opt/asdf-vm/asdf.sh
 
@@ -177,24 +167,14 @@ eval "$(navi widget zsh)"
 # Direnv
 eval "$(direnv hook zsh)"
 
-# Forgit
-source /usr/share/zsh/plugins/forgit/forgit.plugin.zsh
-
-# Direnv python virtualenv ps1
-setopt PROMPT_SUBST
-
-show_virtual_env() {
-  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-    echo "($(basename $VIRTUAL_ENV))"
-  fi
-}
-PS1='$(show_virtual_env)'$PS1
-
-# Rust
-# . /home/thomaz/.asdf/installs/rust/1.79.0/env
-
 # 1Password GH plugin
 source /home/thomaz/.config/op/plugins.sh
+
+# Kubernetes
+source <(kubectl completion zsh)
+
+# Rust asdf
+source "/home/thomaz/.asdf/installs/rust/1.82.0/env"
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

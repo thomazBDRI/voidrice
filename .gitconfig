@@ -17,15 +17,27 @@
 [user]
 	email = thomaz@tnex.xyz
 	name = Thomaz Andrade
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKUFxfBQ75bB8uMcBr9aoKvAk1ducWJD7ycyvqWriP6a
+
 [init]
 	defaultBranch = main
 [safe]
 	directory = /opt/flutter
 [credential "https://github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = op plugin run -- gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[alias]
-	pr = gh pr create --base=develop -a @me -f -l \"open to review\" -r lhalegria -r renatosousa-github
+	helper = op plugin run -- gh auth git-credential
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
+
+[includeIf "gitdir:~/repo/born/"]
+  path = ~/repo/born/.gitconfig

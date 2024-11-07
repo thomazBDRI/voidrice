@@ -29,3 +29,5 @@ hash -d cft=~/.config/tmux/tmux.conf
 hash -d cfl=/home/thomaz/.config/lf/lfrc 
 hash -d cfL=/home/thomaz/.config/lf/scope 
 hash -d cfX=/home/thomaz/.config/nsxiv/exec/key-handler 
+hash -d cfs=~/.ssh/config 
+hash -d cf1=/home/thomaz/.config/1Password/ssh/agent.toml 

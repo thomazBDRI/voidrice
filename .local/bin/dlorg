@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-cd ~/Downloads/
-
-# Book files
-ls *.part || mv *.mobi ~/books
-
-# Image files
-ls *.part || mv *.jpg *.png *.jpeg ~/cloud/images/download/

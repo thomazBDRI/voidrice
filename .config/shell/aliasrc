@@ -6,17 +6,6 @@
 # Use $XINITRC variable if file exists.
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
-[ -f "$MBSYNCRC" ] && alias mbsync="mbsync -c $MBSYNCRC"
-
-# sudo not required for some system commands
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
-	alias $command="sudo $command"
-done; unset command
-
-se() {
-	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
-	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
-	;}
 
 # Rust alternatives
 alias \
@@ -26,9 +15,8 @@ alias \
 	diff="diff --color=auto {} | delta" \
   top="btm" \
   man="batman" \
-	grep="rga" \
+	grep="batgrep" \
   ps="procs"
-
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
@@ -57,6 +45,5 @@ alias \
 
 alias \
     lf="lfub" \
-    magit="nvim -c MagitOnly" \
     ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
     tmux="tmux attach || tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"

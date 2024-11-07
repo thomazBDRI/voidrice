@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Monster Hunter: World
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/582010
-Icon=steam_icon_582010
-Terminal=false
-Type=Application
-Categories=Game;

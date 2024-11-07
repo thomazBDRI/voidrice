@@ -1,0 +1,9 @@
+#!/bin/sh
+
+device=$(bluetoothctl devices | cut -f2 -d' ')
+
+info=$(bluetoothctl info $device)
+
+echo $info
+
+# echo $info | cut -f2 -d':' | paste -d " " - - | sed 's/yes//g' | sed 's/no/❌/g'

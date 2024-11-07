@@ -1,6 +1,0 @@
-#!/bin/sh
-
-app=$(flatpak list --app --columns=application | tail -n +1 | dmenu -i -l 10)
-
-flatpak run ${app}
-

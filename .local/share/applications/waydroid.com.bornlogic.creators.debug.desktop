@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Creators-DEV
+Exec=waydroid app launch com.bornlogic.creators.debug
+Icon=/home/thomaz/.local/share/waydroid/data/icons/com.bornlogic.creators.debug.png
+Categories=X-WayDroid-App;
+X-Purism-FormFactor=Workstation;Mobile;
+Actions=app_settings;
+
+[Desktop Action app_settings]
+Name=App Settings
+Exec=waydroid app intent android.settings.APPLICATION_DETAILS_SETTINGS package:com.bornlogic.creators.debug
+Icon=/home/thomaz/.local/share/waydroid/data/icons/com.android.settings.png

@@ -2,147 +2,152 @@
 vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup(function(use)
-	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
+  -- Packer can manage itself
+  use("wbthomason/packer.nvim")
 
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-file-browser.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-		},
-	})
+  use({
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim",  run = "make" },
+    },
+  })
 
-	use("navarasu/onedark.nvim")
-	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+  use("navarasu/onedark.nvim")
+  use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
-	use({
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		after = "nvim-treesitter",
-	})
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+  })
 
-	use({
-		"nvim-treesitter/nvim-treesitter-context",
-		after = "nvim-treesitter",
-	})
+  use({
+    "nvim-treesitter/nvim-treesitter-context",
+    after = "nvim-treesitter",
+  })
 
-	use("chentoast/marks.nvim")
+  use("chentoast/marks.nvim")
 
-	use("mbbill/undotree")
-	use("tpope/vim-fugitive")
-	use("tpope/vim-unimpaired")
-	use("tpope/vim-surround")
-	use("tpope/vim-commentary") -- Using nvim comment as a test
-	use("tpope/vim-repeat")
-	use("airblade/vim-gitgutter")
+  use("mbbill/undotree")
+  use("tpope/vim-fugitive")
+  use("tpope/vim-unimpaired")
+  use("tpope/vim-surround")
+  use("tpope/vim-commentary") -- Using nvim comment as a test
+  use("tpope/vim-repeat")
+  use("airblade/vim-gitgutter")
 
-	-- 	use({ "RobertPietraru/bloc.nvim", requires = {
-	-- 		{ "nvimtools/none-ls.nvim" },
-	-- 	} })
+  -- 	use({ "RobertPietraru/bloc.nvim", requires = {
+  -- 		{ "nvimtools/none-ls.nvim" },
+  -- 	} })
 
-	use({
-		"akinsho/flutter-tools.nvim",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "stevearc/dressing.nvim" },
-			{
-				"RobertPietraru/bloc.nvim",
-				requires = {
-					{ "nvimtools/none-ls.nvim" },
-				},
-			},
-		},
-	})
+  use({
+    "epwalsh/obsidian.nvim",
+    tag = "v3.9.0",
+  })
 
-	-- tests what is this for?
-	-- use {
-	-- 'nvim-lua/popup.nvim',
-	-- requires = {
-	-- 'nvim-lua/plenary.nvim',
-	--}
-	--}
+  use({
+    "akinsho/flutter-tools.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "stevearc/dressing.nvim" },
+      {
+        "RobertPietraru/bloc.nvim",
+        requires = {
+          { "nvimtools/none-ls.nvim" },
+        },
+      },
+    },
+  })
 
-	use({
-		"yamatsum/nvim-cursorline",
-	})
-	--
-	-- -- I looked for it for sow long
-	use({
-		"windwp/nvim-ts-autotag",
-	})
+  -- tests what is this for?
+  -- use {
+  -- 'nvim-lua/popup.nvim',
+  -- requires = {
+  -- 'nvim-lua/plenary.nvim',
+  --}
+  --}
 
-	-- This one will mess things up
-	use({
-		"nvimdev/lspsaga.nvim",
-	})
+  use({
+    "yamatsum/nvim-cursorline",
+  })
+  --
+  -- -- I looked for it for sow long
+  use({
+    "windwp/nvim-ts-autotag",
+  })
 
-	use({
-		"windwp/nvim-autopairs",
-	})
+  -- This one will mess things up
+  use({
+    "nvimdev/lspsaga.nvim",
+  })
 
-	use({
-		"norcalli/nvim-colorizer.lua",
-	})
+  use({
+    "windwp/nvim-autopairs",
+  })
 
-	use({
-		"folke/todo-comments.nvim",
-	})
+  use({
+    "norcalli/nvim-colorizer.lua",
+  })
 
-	-- New UI?
-	use({
-		"folke/noice.nvim",
-		requires = {
-			{ "rcarriga/nvim-notify" },
-			{ "MunifTanjim/nui.nvim" },
-		},
-	})
+  use({
+    "folke/todo-comments.nvim",
+  })
 
-	-- Terminal stuff test
-	-- use { "akinsho/toggleterm.nvim" }
-	-- use { "pianocomposer321/consolation.nvim" }
+  -- New UI?
+  use({
+    "folke/noice.nvim",
+    requires = {
+      { "rcarriga/nvim-notify" },
+      { "MunifTanjim/nui.nvim" },
+    },
+  })
 
-	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+  -- Terminal stuff test
+  -- use { "akinsho/toggleterm.nvim" }
+  -- use { "pianocomposer321/consolation.nvim" }
 
-	use({
-		"VonHeikemen/lsp-zero.nvim",
-		requires = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" }, -- Required
-			{ "williamboman/mason.nvim" }, -- Optional
-			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+  use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" }, -- Required
-			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "hrsh7th/cmp-buffer" }, -- Optional
-			{ "hrsh7th/cmp-path" }, -- Optional
-			{ "hrsh7th/cmp-cmdline" }, -- Optional
-			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
-			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
+  use({
+    "VonHeikemen/lsp-zero.nvim",
+    requires = {
+      -- LSP Support
+      { "neovim/nvim-lspconfig" },             -- Required
+      { "williamboman/mason.nvim" },           -- Optional
+      { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-			-- Snippets
-			{
-				"L3MON4D3/LuaSnip",
-				requires = {
-					{ "rafamadriz/friendly-snippets" },
-					{ "Nash0x7E2/awesome-flutter-snippets" },
-				},
-			}, -- Required
-			{ "tzachar/cmp-tabnine", run = "./dl_binaries.sh" },
+      -- Autocompletion
+      { "hrsh7th/nvim-cmp" },         -- Required
+      { "hrsh7th/cmp-nvim-lsp" },     -- Required
+      { "hrsh7th/cmp-buffer" },       -- Optional
+      { "hrsh7th/cmp-path" },         -- Optional
+      { "hrsh7th/cmp-cmdline" },      -- Optional
+      { "saadparwaiz1/cmp_luasnip" }, -- Optional
+      { "hrsh7th/cmp-nvim-lua" },     -- Optional
 
-			-- misc
-			{ "lukas-reineke/lsp-format.nvim" },
-		},
-	})
+      -- Snippets
+      {
+        "L3MON4D3/LuaSnip",
+        requires = {
+          { "rafamadriz/friendly-snippets" },
+          { "Nash0x7E2/awesome-flutter-snippets" },
+        },
+      }, -- Required
+      { "tzachar/cmp-tabnine",          run = "./dl_binaries.sh" },
 
-	use({
-		"folke/trouble.nvim",
-		requires = {
-			{ "nvim-tree/nvim-web-devicons" },
-		},
-	})
+      -- misc
+      { "lukas-reineke/lsp-format.nvim" },
+    },
+  })
 
-	use({ "mrjones2014/op.nvim", run = "make install" })
+  use({
+    "folke/trouble.nvim",
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+  })
+
+  use({ "mrjones2014/op.nvim", run = "make install" })
 end)

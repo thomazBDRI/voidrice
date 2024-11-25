@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# variables
+path="/home/$USER/images/screenshots/"
+output="$(date '+%y%m%d-%H%M-%S').png"
+xclip_cmd="wl-copy -t image/png"
+
+case "$(printf "a selected area\\nfull screen\\na selected area (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
+    "a selected area") grim -g "$(slurp)" "$path"pic-selected-"${output}" ;;
+    "full screen") grim "$path"pic-full-"${output}" ;;
+    "a selected area (copy)") grim -g "$(slurp)" - | ${xclip_cmd} ;;
+    "full screen (copy)") grim - | ${xclip_cmd} ;;
+esac

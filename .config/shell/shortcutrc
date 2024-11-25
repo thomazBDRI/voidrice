@@ -32,3 +32,4 @@ cfL="$EDITOR /home/thomaz/.config/lf/scope" \
 cfX="$EDITOR /home/thomaz/.config/nsxiv/exec/key-handler" \
 cfs="$EDITOR ~/.ssh/config" \
 cf1="$EDITOR /home/thomaz/.config/1Password/ssh/agent.toml" \
+cfr="$EDITOR /home/thomaz/.config" \

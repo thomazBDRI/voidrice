@@ -19,3 +19,4 @@ cfL	${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope		# lf's scope/preview file
 cfX	${XDG_CONFIG_HOME:-$HOME/.config}/nsxiv/exec/key-handler	# nsxiv (image viewer) key/script handler
 cfs ~/.ssh/config
 cf1 ${XDG_CONFIG_HOME:-$HOME/.config}/1Password/ssh/agent.toml
+cfr 	${XDG_CONFIG_HOME:-$HOME/.config/river/init}

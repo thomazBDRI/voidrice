@@ -31,3 +31,4 @@ hash -d cfL=/home/thomaz/.config/lf/scope
 hash -d cfX=/home/thomaz/.config/nsxiv/exec/key-handler 
 hash -d cfs=~/.ssh/config 
 hash -d cf1=/home/thomaz/.config/1Password/ssh/agent.toml 
+hash -d cfr=/home/thomaz/.config 
